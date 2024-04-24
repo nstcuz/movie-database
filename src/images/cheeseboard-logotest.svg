@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 314.26 59.72">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d3d3d3;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-6 {
+        font-family: OpenSansItalic-Bold, 'Open Sans';
+        font-size: 12px;
+        font-variation-settings: 'wght' 700, 'wdth' 100;
+        font-weight: 700;
+      }
+
+      .cls-6, .cls-7, .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-7 {
+        font-family: PaytoneOne-Regular, 'Paytone One';
+        font-size: 24px;
+      }
+
+      .cls-2 {
+        fill: #1e1e1b;
+      }
+
+      .cls-3 {
+        fill: #f7cd79;
+      }
+
+      .cls-4 {
+        fill: #424039;
+      }
+
+      .cls-8 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: .6px;
+      }
+
+      .cls-9 {
+        letter-spacing: -.01em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <path class="cls-2" d="M0,28.7l3.84,4.92L40.63,4.92l-3.84-4.92L0,28.7ZM15.7,23.97l-9.5.29,5.16-4.02,9.5-.29-5.16,4.02ZM24.56,17.06l-9.5.29,5.16-4.02,9.5-.29-5.16,4.02ZM33.44,10.13l-9.5.29,5.16-4.02,9.5-.29-5.16,4.02Z"/>
+      <polygon class="cls-5" points="6.2 24.26 15.7 23.97 20.85 19.95 11.36 20.24 6.2 24.26"/>
+      <polygon class="cls-5" points="15.06 17.35 24.56 17.06 29.71 13.04 20.21 13.33 15.06 17.35"/>
+      <polygon class="cls-5" points="23.94 10.42 33.44 10.13 38.59 6.11 29.1 6.4 23.94 10.42"/>
+    </g>
+    <path class="cls-2" d="M4.01,36.74h44.97v21.86c0,.62-.5,1.12-1.12,1.12H5.13c-.62,0-1.12-.5-1.12-1.12v-21.86h0Z"/>
+    <g>
+      <path class="cls-2" d="M49.84,36.74v-6.24H3.18v6.24h46.66ZM25,30.81l-7.67,5.61h-6.54l7.67-5.61h6.54,0ZM36.24,30.81l-7.67,5.61h-6.54l7.67-5.61h6.54ZM47.5,30.81l-7.67,5.61h-6.54l7.67-5.61h6.54Z"/>
+      <polygon class="cls-5" points="10.79 36.43 18.46 30.81 25 30.81 17.34 36.43 10.79 36.43"/>
+      <polygon class="cls-5" points="22.03 36.43 29.7 30.81 36.24 30.81 28.57 36.43 22.03 36.43"/>
+      <polygon class="cls-5" points="33.3 36.43 40.96 30.81 47.5 30.81 39.84 36.43 33.3 36.43"/>
+    </g>
+    <line class="cls-8" x1="5.44" y1="43.46" x2="47.46" y2="43.46"/>
+    <line class="cls-8" x1="5.44" y1="51.96" x2="47.46" y2="51.96"/>
+    <line class="cls-8" x1="18.75" y1="43.46" x2="18.75" y2="51.66"/>
+    <line class="cls-8" x1="34.3" y1="43.46" x2="34.3" y2="51.66"/>
+    <path class="cls-4" d="M4.56,28.53l7.79,6.74c.58.51.23,1.46-.55,1.46h-7.79c-.46,0-.83-.37-.83-.83v-6.74c0-.71.84-1.1,1.38-.63h0Z"/>
+    <circle class="cls-1" cx="4.01" cy="29.16" r=".64"/>
+    <circle class="cls-1" cx="4.01" cy="35.91" r=".64"/>
+    <circle class="cls-1" cx="11.76" cy="35.91" r=".64"/>
+  </g>
+  <g id="Layer_3" data-name="Layer 3">
+    <path class="cls-3" d="M45.72,16.51c-.42.16-.88.23-1.36.18-1.41-.15-2.52-1.35-2.57-2.77-.05-1.33.8-2.46,1.98-2.86l-1.12-3.12c-.21-.58-.91-.78-1.4-.41l-5.94,4.63c.52.56.82,1.34.72,2.19-.14,1.27-1.18,2.28-2.45,2.41-1.08.1-2.04-.42-2.58-1.24l-13.89,10.81c-.67.52-.3,1.61.55,1.61h4.81c.35-2.01,2.11-3.54,4.22-3.54s3.87,1.53,4.22,3.54h17.61c.62,0,1.05-.62.84-1.2l-3.66-10.22h0ZM40.53,26.4c-1.26,0-2.28-1.02-2.28-2.28s1.02-2.28,2.28-2.28,2.28,1.02,2.28,2.28-1.02,2.28-2.28,2.28h0Z"/>
+  </g>
+  <text class="cls-7" transform="translate(58.95 30.81)"><tspan x="0" y="0">Cheeseboa</tspan><tspan class="cls-9" x="129.96" y="0">r</tspan><tspan x="140.33" y="0">d Cinema</tspan></text>
+  <text class="cls-6" transform="translate(60.8 45.21)"><tspan x="0" y="0">MOVIE DATABASE CATERED TO YOU</tspan></text>
+</svg>

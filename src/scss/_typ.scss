@@ -1,0 +1,31 @@
+// Font styles and sizes
+//Nat to add font sizes to appropriate headings/paragraphs
+@use 'vars' as *;
+
+h1 {
+    font-family: $navFont;
+    
+    span {
+        font-family: $bodyFont;
+        text-transform: uppercase;
+        font-style: italic;
+    }
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: $bodyFont;
+}
+
+//Navigation font stylings
+li {
+    list-style-type: none;
+    a {
+        font-family: $navFont;
+        text-transform: uppercase;
+    }
+}
+
+
+footer{
+    color: $fontColorLight;
+}

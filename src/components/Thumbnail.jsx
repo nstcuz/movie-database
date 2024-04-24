@@ -1,0 +1,1 @@
+//For movie thumbnails, include another component for the "rating circle"
