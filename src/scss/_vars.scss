@@ -1,0 +1,36 @@
+//Colors and font styles
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Paytone+One&display=swap');
+
+// Colors
+$primaryColor: #968972;
+$secondaryColor: #595040;
+$highlightColor: #1E1E1B;
+$fontColorLight: #FFFFFF;
+$fontColorDark: #2B2B27;
+$fontColorCheese: #F7CD79;
+
+// Fonts
+$navFont: "Paytone One", sans-serif;
+$bodyFont: "Open Sans", sans-serif;
+//When Open Sans Condensed is needed, add-- font-variation-settings: $thinFont;
+$thinFont: "wdth" 75;
+// font-variation-settings: "wdth" 75;
+
+//desktop font size
+$desktopHeaders: 2.25rem;
+$desktopBody: 1.5rem;
+$destopMoreInfo:1.125rem;
+$desktopFooterTabletNav: 1rem;
+
+//tablet font size
+$tabletHeaders: $desktopBody;
+$tabletSubNav: $desktopBody;
+$tabletMoreInfo:.75rem;
+$tabletFooter: .625rem;
+
+//mobile font size
+$MobileNav: $destopMoreInfo;
+$mobileMovieText:.875rem;
+$mobileMoreInfo:.8125rem;
+$mobileFooter: $tabletFooter;
+
