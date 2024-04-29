@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-#user added jazz
+# user adds
 PRIVATE-api-info.js
