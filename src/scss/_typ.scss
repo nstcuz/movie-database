@@ -1,14 +1,18 @@
 // Font styles and sizes
 //Nat to add font sizes to appropriate headings/paragraphs
 @use 'vars' as *;
+@use 'mixins' as *;
 
 h1 {
     font-family: $navFont;
-    
+    font-size: $h1Mobile;
+    color: $fontColorLight;
+    padding-top: 0.5rem;
     span {
         font-family: $bodyFont;
         text-transform: uppercase;
         font-style: italic;
+        font-size: $h1SpanMobile;
     }
 }
 
@@ -22,9 +26,9 @@ li {
     a {
         font-family: $navFont;
         text-transform: uppercase;
+        color:$fontColorLight;
     }
 }
-
 
 footer{
     color: $fontColorLight;
