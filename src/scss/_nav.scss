@@ -1,2 +1,56 @@
 // Navigation styling
 @use 'vars' as *;
+@use 'mixins' as *;
+
+a {
+    text-decoration: none;
+    &:hover {
+        color: $fontColorCheese;
+    }
+
+}
+
+.btn-main-nav {
+    background: transparent;
+    border: none;
+    padding: 1.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    .hamburger-icon {
+        display: inline-block;
+        width: 1.875rem;
+        height: 1.25rem;
+        position: relative;
+        .line {
+            display: block;
+            width: 100%;
+            height: .1875rem;
+            background: $fontColorLight;
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+            &:nth-child(1) {
+                top: 0;
+            }
+            
+            &:nth-child(2) {
+                top: 50%;
+            }
+            &:nth-child(3) {
+                top: 100%;
+            }
+        }
+        @include mediaQuery(64em) {
+            display: none;
+        }
+    }
+}
+
+.nav-links {
+    display: none;
+    @include mediaQuery(64em) {
+        @include column-flex;
+    }
+}

@@ -13,17 +13,18 @@ const Header = () => {
         setShowNav(!showNav);
     }
 
-    const isDesktop = (e) => {
-        if(e.matches){
-            setShowNav(false);
-        }
-    }
-
     useEffect(() => {
-        let mediaQuery = window.matchMedia('(min-width: 1100px)')
-        mediaQuery.addEventListener('change', isDesktop);
-
-        return() => mediaQuery.removeEventListener('change', isDesktop);
+        const handleResize = () => {
+            // Update showNav based on window width
+            if (window.innerWidth >=1024) {
+                setShowNav(false);
+            }
+        };
+        // Listen for resize
+        window.addEventListener('resize', handleResize);
+        return() => {
+            window.removeEventListener('resize', handleResize);
+        }
     }, []);
 
     return (
@@ -45,7 +46,7 @@ const Header = () => {
                     <span className="line"></span>
                     <span className="line"></span>
                 </span>
-                <span className="sr-only">Menu</span>
+                <span className="sr-only"></span>
             </button>
             <Nav handleShowHideNav={toggleNav}/>                       
         </header>

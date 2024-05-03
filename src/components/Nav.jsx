@@ -12,9 +12,12 @@ const Nav = ({handleShowHideNav}) => {
 
     return (
         <nav className="main-nav" onClick={closeNav}>
-            <ul>
-                <li><NavLink to="/about">About</NavLink></li>
-                <li><NavLink to="/favorites">Favorites</NavLink></li>
+            <ul className="nav-links">
+                <input type="text" placeholder="Search" />
+                <div className="header-nav-links">
+                    <li><NavLink to="/about">About</NavLink></li>
+                    <li><NavLink to="/favorites">Favorites</NavLink></li>
+                </div>
             </ul>
         </nav>
     );

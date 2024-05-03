@@ -2,6 +2,7 @@
 @use 'mixins' as *;
 
 header {
+    @include header-flex;
     background-color: $secondaryColor;
     .logo {
     @include logo-flex;
@@ -14,6 +15,12 @@ header {
     }
     img {
         width: 3rem;
+        @include mediaQuery(45.25em) {
+            width: 4rem;
+        }
+        @include mediaQuery(64em) {
+            width: 5rem;
+        }
     }
 }
 
