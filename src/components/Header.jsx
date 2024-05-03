@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Nav from './Nav';
 import logo from '../images/cheeseboard-icon.svg';
 
@@ -28,12 +28,14 @@ const Header = () => {
 
     return (
         <header className={showNav ? 'show' : ''}>
-            <div className="logo">
-                {logoThing}
-                <h1>Cheeseboard Cinema
-                    <span>Movie database catered to you</span>
-                </h1>
-            </div>
+            <Link to="/">
+                <div className="logo">
+                    {logoThing}
+                    <h1>Cheeseboard Cinema
+                        <span>Movie database catered to you</span>
+                    </h1>
+                </div>
+            </Link>
             <button className="btn-main-nav"
                     onMouseDown={(e) => { e.preventDefault(); }}
                     onClick={toggleNav}
@@ -42,14 +44,10 @@ const Header = () => {
                     <span className="line"></span>
                     <span className="line"></span>
                     <span className="line"></span>
-                    <span className="line"></span>
-                    <span className="line"></span>
                 </span>
                 <span className="sr-only">Menu</span>
             </button>
-            <Nav handleShowHideNav={toggleNav}/>
-           
-            
+            <Nav handleShowHideNav={toggleNav}/>                       
         </header>
     )
 }

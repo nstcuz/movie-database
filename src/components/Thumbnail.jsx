@@ -6,7 +6,7 @@ export class Thumbnail extends Component {
   render() {
     return (
       <div>
-        
+        <p>Hello</p>
       </div>
     )
   }

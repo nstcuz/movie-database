@@ -1,3 +1,5 @@
+import Thumbnail from "../components/Thumbnail";
+
 const PageHome = () => {
     return (
         <main>
@@ -7,6 +9,7 @@ const PageHome = () => {
 			<section>
 				<p>Tab between Popular/Now Playing/Upcoming/Top Rated thumbs.</p>
                 <p>Thumbs go here.</p>
+                <Thumbnail/>
 			</section>
 		</main>
     )

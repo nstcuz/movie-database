@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# user adds
-# PRIV-api.js
+# API KEY DO NOT REMOVE 
+src/globals/globalVars.js
+
