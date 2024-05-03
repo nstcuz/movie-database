@@ -3,3 +3,55 @@
 body {
     background-color: $primaryColor;
 }
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #FFFFFF;
+    background-color: #968972;
+
+    .about-container{
+        background-color: #1E1E1B;
+    }
+  
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #F7CD79;
+      background-color: #1E1E1B;
+    }
+  
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    p {
+      margin-bottom: 1rem;
+      background-color: #1E1E1B;
+    }
+  
+    a {
+      color: #F7CD79;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      
+  
+      &:hover {
+        color: #F7CD79;
+      }
+    }
+  
+    img {
+   
+      max-width: 300px;
+      margin-top: 2rem;
+    
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
