@@ -13,11 +13,8 @@ const Nav = ({handleShowHideNav}) => {
     return (
         <nav className="main-nav" onClick={closeNav}>
             <ul>
-                {/* The anchor tag code below is incorrect...
-                    Use React Router's NavLink component for
-                    navigation links... */}
-                {/* <li><NavLink to="/portfolio">Portfolio</NavLink></li>
-                <li><NavLink to="/contact">Contact</NavLink></li> */}
+                <li><NavLink to="/about">About</NavLink></li>
+                <li><NavLink to="/favorites">Favorites</NavLink></li>
             </ul>
         </nav>
     );
