@@ -1,7 +1,4 @@
-// import AppRouter from './routers/AppRouter'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import About from './pages/PageAbout'
+import AppRouter from './routers/AppRouter'
 
 import './scss/styles.scss'
 
@@ -9,11 +6,7 @@ function App() {
 
   return (
     <>
-      <div className="wrapper">
-        <Header />
-        <About />
-        <Footer />
-      </div>
+        <AppRouter />
     </>
   )
 }
