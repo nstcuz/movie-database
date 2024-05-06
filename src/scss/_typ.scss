@@ -8,11 +8,23 @@ h1 {
     font-size: $h1Mobile;
     color: $fontColorLight;
     padding-top: 0.5rem;
+    @include mediaQuery(45.25em) {
+        font-size: $h1Tablet;
+    }
+    @include mediaQuery(64em) {
+        font-size: $h1Desktop;
+    }
     span {
         font-family: $bodyFont;
         text-transform: uppercase;
         font-style: italic;
         font-size: $h1SpanMobile;
+        @include mediaQuery(45.25em) {
+            font-size: $h1SpanTablet;
+        }
+        @include mediaQuery(64em) {
+            font-size: $h1SpanDesktop;
+        }
     }
 }
 
@@ -23,11 +35,16 @@ h2, h3, h4, h5, h6 {
 //Navigation font stylings
 li {
     list-style-type: none;
-    a {
-        font-family: $navFont;
-        text-transform: uppercase;
-        color:$fontColorLight;
-    }
+}
+
+a {
+    text-transform: uppercase;
+    color:$fontColorLight;
+    text-decoration: none;
+    &:hover, &:focus, &:active {
+        color: $fontColorCheese;
+        outline: none;
+    }        
 }
 
 footer{

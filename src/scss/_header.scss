@@ -6,7 +6,6 @@ header {
     .logo {
     @include logo-flex;
     gap: .5rem;
-    padding: .5rem;
         span {
             @include column-flex;
             padding-top: .25rem;
@@ -14,7 +13,23 @@ header {
     }
     img {
         width: 3rem;
+        padding: .5rem 0;
+        @include mediaQuery(45.25em) {
+            width: 4rem;
+        }
+        @include mediaQuery(64em) {
+            width: 5rem;
+        }
+    }
+    a {
+        font-family: $navFont;
     }
 }
 
-
+.header-contents {
+    width: 95%;
+    max-width: 75rem;
+    @include header-flex;
+    margin: 0 auto;
+    align-items: center;
+}

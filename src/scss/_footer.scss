@@ -8,9 +8,13 @@ footer {
     text-align: center;
     padding: .5rem;
     
-
     img {
-        width: 3rem;
+        width: 2rem;
         padding-top: .5rem;
+    }
+
+    a {
+        margin: .25rem;
+        text-transform: none;
     }
 }

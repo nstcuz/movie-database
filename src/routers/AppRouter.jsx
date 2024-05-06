@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 // Pages
 import PageHome from '../pages/PageHome';
@@ -11,11 +12,12 @@ function AppRouter() {
         <BrowserRouter>
             <div className="wrapper">
                 <Header />
-                    <Routes>
-                        <Route path="/" exact element={<PageHome />} />
-                        <Route path="/about" element={<PageAbout />} />
-                        <Route path="/favorites" element={<PageFavorites />} />
-                    </Routes>
+                <Routes>
+                    <Route path="/" exact element={<PageHome />} />
+                    <Route path="/about" element={<PageAbout />} />
+                    <Route path="/favorites" element={<PageFavorites />} />
+                </Routes>
+                <Footer />
             </div>
         </BrowserRouter>
     )
