@@ -38,3 +38,19 @@ header {
     position: relative;
     @include cheese-arrow('../images/cheese-arrow.svg');
 }
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background-color: $secondaryColor;
+    color: $fontColorLight;
+    z-index: 1;
+    li {
+        padding: .25rem;
+        border-bottom: 1px solid $highlightColor;
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+    }
