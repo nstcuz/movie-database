@@ -14,15 +14,19 @@ body {
     line-height: 1.5;
     color:  $fontColorLight;
     background-color: $primaryColor;
+    padding-bottom: 5rem;
+   
+    
 
     .about-container{
-        background-color: $highlightColor;
+        background-color: $fontColorDark;
     }
     .about-text{
         margin: 1rem;
     }
     .image-container{
         text-align: center;
+        
     }
   
     h2 {
@@ -31,7 +35,22 @@ body {
       color: $fontColorCheese;
       text-align: center;
       text-transform: uppercase;
+      background-repeat: no-repeat;
+      background-position: center top; 
+      transform: translate(1%, -170%);
+    
+    
     }
+    .clacker{
+      background-image: url("../images/white\ stripes.png");
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      padding-top: 5rem;
+      
+    }
+   .header-container{
+    background-color: $highlightColor;
+   }
   
     p {
       margin-bottom: 1rem;
@@ -42,19 +61,20 @@ body {
     }
     }
   
+    .tolower{
+      text-transform: none;
+    }
     a {
       color: $fontColorCheese;
       text-decoration: none;
       transition: color 0.3s ease;
-      
-  
       &:hover {
         color: $fontColorCheese;
       }
     }
   
     img {
-        width: 25%;
+        width: 5rem;
     }
   }
 
@@ -62,12 +82,14 @@ body {
     .about-content {
     h2{
       font-size: 1.5rem;
+       transform: translate(1%, -90%);
     }
     p{
       font-size: 1.4rem;
     }
-    img{
-      width: 15%;
+
+    .clacker{
+      padding-top: 4rem;
     }
     }
   }
@@ -77,12 +99,14 @@ body {
     .about-container{
     h2{
     font-size: 2rem;
-    }
-    img{
-      width: 20%;
+    transform: translate(1%, 12%);
     }
     p{
       font-size: 1.5rem;
     }
+   .clacker{
+    padding: 16px;
+   }
   }
   }
+ 
