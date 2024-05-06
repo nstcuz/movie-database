@@ -28,7 +28,7 @@ const [error, setError] = useState('');
 
   return (
     <div className="movie-card">
-      <h2>{movie ? movie.original_title : 'movie title not available'}</h2>
+      <h2>{movie ? movie.title: 'movie title not available'}</h2>
       { movie ? <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} /> : 'sorry the movie hasnt loaded yet' }
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
