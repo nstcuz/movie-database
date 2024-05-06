@@ -2,14 +2,6 @@
 @use 'vars' as *;
 @use 'mixins' as *;
 
-a {
-    text-decoration: none;
-    &:hover {
-        color: $fontColorCheese;
-    }
-
-}
-
 .btn-main-nav {
     background: transparent;
     border: none;
@@ -98,7 +90,7 @@ a {
     @include mediaQuery(64em) {
         @include column-flex;
         align-items: center;
-        gap: 2rem;
+        gap: 1.5rem;
         padding: 0;
         background-color: transparent;
         position: static;

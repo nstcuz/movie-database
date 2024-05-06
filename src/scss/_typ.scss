@@ -35,11 +35,16 @@ h2, h3, h4, h5, h6 {
 //Navigation font stylings
 li {
     list-style-type: none;
-    a {
-        font-family: $navFont;
-        text-transform: uppercase;
-        color:$fontColorLight;
-    }
+}
+
+a {
+    text-transform: uppercase;
+    color:$fontColorLight;
+    text-decoration: none;
+    &:hover, &:focus, &:active {
+        color: $fontColorCheese;
+        outline: none;
+    }        
 }
 
 footer{

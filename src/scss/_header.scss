@@ -13,12 +13,16 @@ header {
     }
     img {
         width: 3rem;
+        padding: .5rem 0;
         @include mediaQuery(45.25em) {
             width: 4rem;
         }
         @include mediaQuery(64em) {
             width: 5rem;
         }
+    }
+    a {
+        font-family: $navFont;
     }
 }
 
