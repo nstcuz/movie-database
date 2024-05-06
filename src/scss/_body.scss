@@ -1,4 +1,5 @@
 @use 'vars' as *;
+@use 'mixins' as *;
 
 body {
     background-color: $primaryColor;
@@ -7,47 +8,81 @@ body {
 .about-content {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    font-size: 1.1rem;
+    padding: 1rem;
+    text-align: left;
+    font-size: 1rem;
     line-height: 1.5;
-    color: #FFFFFF;
-    background-color: #968972;
+    color:  $fontColorLight;
+    background-color: $primaryColor;
 
     .about-container{
-        background-color: #1E1E1B;
+        background-color: $highlightColor;
+    }
+    .about-text{
+        margin: 1rem;
+    }
+    .image-container{
+        text-align: center;
     }
   
     h2 {
-      font-size: 2rem;
+      font-size: 1rem;
       margin-bottom: 1rem;
-      color: #F7CD79;
-      background-color: #1E1E1B;
-    }
-  
-    h3 {
-      font-size: 1.5rem;
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
+      color: $fontColorCheese;
+      text-align: center;
+      text-transform: uppercase;
     }
   
     p {
       margin-bottom: 1rem;
-      background-color: #1E1E1B;
+      &.border-bottom {
+        border-bottom: 2px solid $fontColorLight;
+        padding-bottom: 1rem;
+    
+    }
     }
   
     a {
-      color: #F7CD79;
+      color: $fontColorCheese;
       text-decoration: none;
       transition: color 0.3s ease;
       
   
       &:hover {
-        color: #F7CD79;
+        color: $fontColorCheese;
       }
     }
   
     img {
         width: 25%;
     }
+  }
+
+  @include mediaQuery(42.25em){
+    .about-content {
+    h2{
+      font-size: 1.5rem;
+    }
+    p{
+      font-size: 1.4rem;
+    }
+    img{
+      width: 15%;
+    }
+    }
+  }
+
+
+  @include mediaQuery(64em){
+    .about-container{
+    h2{
+    font-size: 2rem;
+    }
+    img{
+      width: 20%;
+    }
+    p{
+      font-size: 1.5rem;
+    }
+  }
   }
