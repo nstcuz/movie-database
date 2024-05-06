@@ -18,11 +18,13 @@ a {
     top: 0;
     right: 0;
     cursor: pointer;
+
     .hamburger-icon {
         display: inline-block;
         width: 1.875rem;
         height: 1.25rem;
         position: relative;
+
         .line {
             display: block;
             width: 100%;
@@ -31,42 +33,91 @@ a {
             position: absolute;
             left: 0;
             transition: all 0.3s ease;
+
             &:nth-child(1) {
                 top: 0;
+                transform: rotate(0deg);
+                transition: transform 0.3s ease;
             }
             
             &:nth-child(2) {
                 top: 50%;
+                transform: rotate(0deg);
+                transition: transform 0.3s ease;
             }
             &:nth-child(3) {
                 top: 100%;
+                transform: rotate(0deg);
+                transition: transform 0.3s ease;
             }
         }
-        @include mediaQuery(64em) {
-            display: none;
+
+        &.open {
+            .line:nth-child(1) {
+                top: 50%;
+                transform: rotate(45deg);
+            }
+            .line:nth-child(2) {
+                opacity: 0;
+            }
+            .line:nth-child(3) {
+                top: 50%;
+                transform: rotate(-45deg);
+            }
         }
+    }
+    @include mediaQuery(64em) {
+        display: none;
+    }
+}
+
+.main-nav {
+    @include mediaQuery(64em) {
+        @include column-flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+    &.show .nav-links {
+        display: flex;
     }
 }
 
 .nav-links {
     display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; 
+    padding: 1rem; 
+    background-color: $secondaryColor; 
+    width: 100%; 
+    position: absolute;
+    top: 3.75rem;
+    left: 0;
+
     @include mediaQuery(64em) {
         @include column-flex;
         align-items: center;
-        margin-top: 1.5rem;
+        gap: 2rem;
+        padding: 0;
+        background-color: transparent;
+        position: static;
     }
+
     .search-bar {
         @include header-flex;
         align-items: center;
-        width: 22rem;
+        max-width: 22rem;
         img {
             height: 2rem;
             width: auto;
             padding-right: 1rem;
         }
     }
+
     input {
-        width: 19rem;
+        width: 100%;
+        max-width: 19rem;
         border-radius: 1rem;
         height: 2.25rem;
         padding-left: 1rem;
@@ -74,10 +125,12 @@ a {
             text-transform: uppercase;
         }
     }
+
     .header-nav-links {
         @include header-flex;
-        padding-top: 1.5rem;
-        margin-left: 3rem;
-        gap: 7rem;
+        gap: 2rem;
+        @include mediaQuery(64em) {
+            gap: 7rem;
+        }
     }
 }

@@ -29,7 +29,7 @@ const Header = () => {
 
     return (
         <header className={showNav ? 'show' : ''}>
-            <div class="header-contents">
+            <div className="header-contents">
                 <Link to="/">
                     <div className="logo">
                         {logoThing}
@@ -38,18 +38,18 @@ const Header = () => {
                         </h1>
                     </div>
                 </Link>
-                <button className="btn-main-nav"
+                <button className={'btn-main-nav'}
                         onMouseDown={(e) => { e.preventDefault(); }}
                         onClick={toggleNav}
                         >
-                    <span className="hamburger-icon">
+                    <span className={`hamburger-icon ${showNav ? 'open' : ''}`}>
                         <span className="line"></span>
                         <span className="line"></span>
                         <span className="line"></span>
                     </span>
                     <span className="sr-only"></span>
                 </button>
-                <Nav handleShowHideNav={toggleNav}/>
+                <Nav showNav={showNav} handleShowHideNav={toggleNav}/>
             </div>                      
         </header>
     )

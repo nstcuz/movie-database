@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import searchIcon from '../images/iconmonstr-search-thin.svg';
 
-const Nav = ({handleShowHideNav}) => {
+const Nav = ({ showNav, handleShowHideNav}) => {
 
     const search = <img src={searchIcon} alt="Search icon" />
 
@@ -14,7 +14,7 @@ const Nav = ({handleShowHideNav}) => {
     }
 
     return (
-        <nav className="main-nav" onClick={closeNav}>
+        <nav className={`main-nav ${showNav ? 'show' : ''}`} onClick={closeNav}>
             <ul className="nav-links">
                 <div className="search-bar">
                     {search}
