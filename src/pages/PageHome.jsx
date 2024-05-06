@@ -6,10 +6,12 @@ const PageHome = () => {
             <section>
                 <p>Slideshow goes here</p>
             </section>
-			<section>
-				<p>Tab between Popular/Now Playing/Upcoming/Top Rated thumbs.</p>
-                <p>Thumbs go here.</p>
-                <Thumbnail/>
+            <p>Tab between Popular/Now Playing/Upcoming/Top Rated thumbs.</p>
+			<section className="thumbnail-section">
+                <Thumbnail />
+                <Thumbnail />
+                <Thumbnail />
+                <Thumbnail />
 			</section>
 		</main>
     )

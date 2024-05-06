@@ -1,0 +1,76 @@
+@use 'vars' as *;
+
+.thumbnail-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.thumbnail-container {
+    margin: .5rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 8.5rem;
+    height: 19.5rem;
+    background-color: $fontColorDark;
+    color: $fontColorLight;
+
+    img {
+        max-width: 8.5rem;
+        min-height: 12.8125rem; //setting height for movie poster, may change later
+        overflow: hidden;
+    }
+
+    h3, p:not(.button-container p) {
+        margin: .25rem .375rem;
+    }
+
+    h3 {
+        font-size: $mobileMovieText;
+        font-weight: 500;
+        line-height: 1.35;
+    }
+
+    p:not(.details-overlay p) {
+        font-size: .75rem;
+        font-variation-settings: $thinFont;
+    }
+
+    .details-overlay {
+        p {
+            font-size: .75rem;
+        }
+    }
+
+    .btn-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .more-btn {
+            border: 1px solid $fontColorCheese;
+            padding: .25rem .5rem;
+            display: inline-block;
+            font-size: $mobileMoreInfo;
+            font-weight: 500;
+            text-align: center;
+            color: $fontColorCheese;
+        }
+
+        .fav-heart {
+            padding-inline: 0;
+            border: none;
+            display: block;
+            background-color: transparent;
+            width: 1.75rem;
+            height: auto;
+            float: right;
+    
+            svg {
+                display: block;
+            }
+        }
+    }
+}
