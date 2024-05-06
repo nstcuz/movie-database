@@ -7,7 +7,11 @@ const Footer = () => {
     return (
         <footer>
             {githubIcon}
-            <p>&copy;By Cat, Nic, Natalia, Matthew 2024</p>
+            <p>&copy;By 
+                <a href="https://cgtwebdesigns.com/">Cat</a>, 
+                <a href="https://niccousins.com/">Nic</a>, 
+                <a href="https://natcreates.com/">Natalia</a>, 
+                <a href="https://mlewebs.ca/">Matthew</a> 2024</p>
         </footer>
     )
 }
