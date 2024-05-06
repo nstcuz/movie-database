@@ -1,4 +1,5 @@
 import logo from '../images/TMDb-logo.svg';
+import { NavLink } from 'react-router-dom';
 
 import '../scss/styles.scss'
 
@@ -13,7 +14,7 @@ const About = () => {
                 </div>
             <div className='about-text'>
             <p>Cheeseboard Cinema is a movie database where users can search up movie titles based on different catagories, such as genre and popularity.</p>
-            <p className="border-bottom">Join and build your collect with our <a href="PageFavorites.jsx">Favorites</a> feature!</p>
+            <p className="border-bottom">Join and build your collect with our <NavLink to="/favorites">Favorites</NavLink> feature!</p>
             <p>So... what's with the "cheese" theme?</p>
             <p>Ever watched something and thought "That's so cheesey"</p>
             <p className="border-bottom">The creator behind Cheeseboard Cinema combined that sentiment and the iconic "clapperboard", which a "cheeseboard" movie database
