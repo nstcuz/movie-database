@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { movieEndpoint } from '../globals/globalVars';
 const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
-import 
 
 
 function App() {
