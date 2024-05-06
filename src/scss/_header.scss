@@ -2,12 +2,10 @@
 @use 'mixins' as *;
 
 header {
-    @include header-flex;
     background-color: $secondaryColor;
     .logo {
     @include logo-flex;
     gap: .5rem;
-    padding: .5rem;
         span {
             @include column-flex;
             padding-top: .25rem;
@@ -24,4 +22,10 @@ header {
     }
 }
 
-
+.header-contents {
+    width: 95%;
+    max-width: 75rem;
+    @include header-flex;
+    margin: 0 auto;
+    align-items: center;
+}
