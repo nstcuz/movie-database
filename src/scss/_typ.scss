@@ -1,5 +1,5 @@
 // Font styles and sizes
-//Nat to add font sizes to appropriate headings/paragraphs
+
 @use 'vars' as *;
 @use 'mixins' as *;
 
@@ -28,7 +28,7 @@ h1 {
     }
 }
 
-h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6, p, a {
     font-family: $bodyFont;
 }
 
