@@ -23,6 +23,11 @@ header {
     }
     a {
         font-family: $navFont;
+        letter-spacing: .0625rem;
+    }
+    h1 {
+        text-transform: none;
+        letter-spacing: .125rem;
     }
 }
 
@@ -53,4 +58,4 @@ header {
             border-bottom: none;
         }
     }
-    }
+}

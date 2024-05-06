@@ -1,10 +1,11 @@
 import Thumbnail from "../components/Thumbnail";
+import Hero from '../components/Hero';
 
 const PageHome = () => {
     return (
         <main>
             <section>
-                <p>Slideshow goes here</p>
+                <Hero />
             </section>
             <p>Tab between Popular/Now Playing/Upcoming/Top Rated thumbs.</p>
 			<section className="thumbnail-section">
