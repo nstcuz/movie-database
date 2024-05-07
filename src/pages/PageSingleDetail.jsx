@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { movieEndpoint } from '../globals/globalVars';
+import FavoriteBtn from '../components/FavoriteBtn';
 const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
 // import Header from '../components/Header';
 // import Footer from '../components/Footer';
+// import FavoriteBtn from '../components/FavoriteBtn';
 
 function App() {
   const [movie, setMovie] = useState(null);
@@ -44,7 +46,7 @@ function App() {
                     ))}
                     </ul>
                 )}
-            <img src="../images/cheese-heart.svg" alt="Cheese Heart" />
+          {/* <FavoriteBtn /> */}
           </div>
         </section>
       )}
