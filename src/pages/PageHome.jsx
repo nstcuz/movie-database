@@ -22,6 +22,14 @@ function PageHome() {
         setMovieType(type);
     };
 
+    const truncateTitle = ( title, maxLength) => {
+        //Add '...' if the original overview has more words than maxLength
+        if (title.length > maxLength) {
+            return title.substring(0, maxLength) + '...';
+        }
+        return title;
+    }
+
     const truncateOverview = ( overview, maxWords ) => {
         //Split overview into array of words
         const words = overview.split(' ');
@@ -37,6 +45,10 @@ function PageHome() {
     }
 
     const formatRatingPercentage = ( voteAverage ) => {
+        if ( voteAverage === 0 ) {
+            return "NR"; //For upcoming movies that have no ratings
+        }
+        //Converts rating to percentage and rounds to nearest integer
         const percentage = Math.round(voteAverage * 10) + '%';
         return percentage;
     }
@@ -56,7 +68,7 @@ function PageHome() {
                 {movies.map(movie => (
                     <Thumbnail
                         key={movie.id}
-                        title={movie.title}
+                        title={truncateTitle(movie.title, 32)}
                         release_date={movie.release_date}
                         overview={truncateOverview(movie.overview, 12)}
                         rating={formatRatingPercentage(movie.vote_average)}

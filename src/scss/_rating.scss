@@ -1,0 +1,22 @@
+@use 'vars' as *;
+
+.rating {
+    border: 3px solid $fontColorCheese;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: .5rem;
+    bottom: .5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: $fontColorLight;
+    color: $fontColorDark;
+
+    p {
+        font-size: $ratingFontSize;
+        font-variation-settings: $thinFont;
+        font-weight: 600;
+    }
+}

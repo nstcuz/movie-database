@@ -33,7 +33,7 @@ function Thumbnail({ title, release_date, overview, rating, image }) {
 
       </div>
       <h3>{title}</h3>
-      <p>{release_date}</p>
+      <p class="date">{release_date}</p>
 
       <div className="btn-container">
         {/* href to link dynamically to single details */}
