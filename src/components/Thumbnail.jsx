@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import FavoriteBtn from './FavoriteBtn';
- 
-function Thumbnail() {
+
+
+function Thumbnail({ title, release_date, overview, popularity, image }) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
@@ -21,20 +22,18 @@ function Thumbnail() {
             onClick={toggleOverlay}
             >
         {/*src and alt will be dynamic later*/}
-        <img />
+        <img src={"https://image.tmdb.org/t/p/w500"+image} alt="" />
 
         <div className={`details-overlay ${isOverlayVisible ? 'active' : ''}`}>
-          <p>Movie details wee woo wee woo so much details</p>
+          <p>{overview}</p>
           <div className="rating">
-            <p>XX%</p>
+            <p>{popularity}</p>
           </div>
         </div>
 
-        
       </div>
-      <h3>Movie Title Movie Title Movie Title</h3>
-      <p>Release Date</p>
-
+      <h3>{title}</h3>
+      <p>{release_date}</p>
 
       <div className="btn-container">
         {/* href to link dynamically to single details */}
@@ -44,6 +43,5 @@ function Thumbnail() {
     </div>
   )
 }
-
 
 export default Thumbnail;

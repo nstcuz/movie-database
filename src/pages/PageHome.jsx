@@ -1,18 +1,48 @@
 import Thumbnail from "../components/Thumbnail";
 import Hero from '../components/Hero';
+import { useState, useEffect } from 'react';
+import { movieEndpoint, apiKey } from '../globals/globalVars';
 
-const PageHome = () => {
+function PageHome() {
+    const [movies, setMovies] = useState([]);
+    const [movieType, setMovieType] = useState("now_playing");
+
+    useEffect(() => {
+        const fetchMovies = async (selectType) => {
+          const response = await fetch(`${movieEndpoint}${selectType}?api_key=${apiKey}`);
+          let data = await response.json();
+          setMovies(data.results);
+        };
+
+        fetchMovies(movieType);
+    }, [movieType]);
+
+    const handleMovieTypeChange = (type) => {
+        setMovieType(type);
+    };
+
     return (
         <main>
             <section>
                 <Hero />
             </section>
-            <p>Tab between Popular/Now Playing/Upcoming/Top Rated thumbs.</p>
+            <div className="movie-type-btns">
+                <button onClick={() => handleMovieTypeChange("now_playing")}>Now Playing</button>
+                <button onClick={() => handleMovieTypeChange("popular")}>Popular</button>
+                <button onClick={() => handleMovieTypeChange("upcoming")}>Upcoming</button>
+                <button onClick={() => handleMovieTypeChange("top_rated")}>Top Rated</button>
+            </div>
 			<section className="thumbnail-section">
-                <Thumbnail />
-                <Thumbnail />
-                <Thumbnail />
-                <Thumbnail />
+                {movies.map(movie => (
+                    <Thumbnail
+                        key={movie.id}
+                        title={movie.title}
+                        release_date={movie.release_date}
+                        overview={movie.overview}
+                        popularity={movie.popularity}
+                        image={movie.poster_path}
+                    />
+                ))}
 			</section>
 		</main>
     )
