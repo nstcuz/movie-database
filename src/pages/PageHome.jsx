@@ -1,7 +1,7 @@
-import Thumbnail from "../components/Thumbnail";
-import Hero from '../components/Hero';
 import { useState, useEffect } from 'react';
 import { movieEndpoint, apiKey } from '../globals/globalVars';
+import Hero from '../components/Hero';
+import Thumbnail from "../components/Thumbnail";
 
 function PageHome() {
     const [movies, setMovies] = useState([]);
@@ -12,6 +12,7 @@ function PageHome() {
           const response = await fetch(`${movieEndpoint}${selectType}?api_key=${apiKey}`);
           let data = await response.json();
           setMovies(data.results);
+          console.log(data.results);
         };
 
         fetchMovies(movieType);
@@ -20,6 +21,25 @@ function PageHome() {
     const handleMovieTypeChange = (type) => {
         setMovieType(type);
     };
+
+    const truncateOverview = ( overview, maxWords ) => {
+        //Split overview into array of words
+        const words = overview.split(' ');
+        //Select the desired number of words
+        const slicedWords = words.slice(0, maxWords);
+        //Join selected words back into string
+        const truncatedOverview = slicedWords.join(' ');
+        //Add '...' if the original overview has more words than maxWords
+        if (words.length > maxWords) {
+          return truncatedOverview + '...';
+        }
+        return truncatedOverview;
+    }
+
+    const formatRatingPercentage = ( voteAverage ) => {
+        const percentage = Math.round(voteAverage * 10) + '%';
+        return percentage;
+    }
 
     return (
         <main>
@@ -38,8 +58,8 @@ function PageHome() {
                         key={movie.id}
                         title={movie.title}
                         release_date={movie.release_date}
-                        overview={movie.overview}
-                        popularity={movie.popularity}
+                        overview={truncateOverview(movie.overview, 12)}
+                        rating={formatRatingPercentage(movie.vote_average)}
                         image={movie.poster_path}
                     />
                 ))}

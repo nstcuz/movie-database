@@ -4,7 +4,7 @@ import { useState } from 'react';
 import FavoriteBtn from './FavoriteBtn';
 
 
-function Thumbnail({ title, release_date, overview, popularity, image }) {
+function Thumbnail({ title, release_date, overview, rating, image }) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
@@ -27,7 +27,7 @@ function Thumbnail({ title, release_date, overview, popularity, image }) {
         <div className={`details-overlay ${isOverlayVisible ? 'active' : ''}`}>
           <p>{overview}</p>
           <div className="rating">
-            <p>{popularity}</p>
+            <p>{rating}</p>
           </div>
         </div>
 
