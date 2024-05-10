@@ -8,11 +8,12 @@
 }
 
 .thumbnail-container {
+    border: 1px solid $fontColorDark;
     margin: .5rem;
     display: flex;
     flex-direction: column;
     position: relative;
-    max-width: 8.5rem;
+    max-width: 8.625rem;
     height: 19.5rem;
     background-color: $fontColorDark;
     color: $fontColorLight;
@@ -24,6 +25,7 @@
     h3 {
         font-size: $mobileMovieText;
         font-weight: 500;
+        font-variation-settings: $thinFont;
         line-height: 1.35;
     }
 
