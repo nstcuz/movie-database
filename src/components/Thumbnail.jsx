@@ -3,7 +3,7 @@ import { useState } from 'react';
 import FavoriteBtn from './FavoriteBtn';
 import { truncateTitle, truncateOverview, formatRatingPercentage } from '../globals/globalVars';
 import { useDispatch } from 'react-redux';
-import { addFav, deleteFav } from '../../favs/favSlices.jsx';
+import { addFav, deleteFav } from '../favs/favSlices.jsx';
 
 
 function Thumbnail({ title, release_date, overview, rating, image, movie }) {

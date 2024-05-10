@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { appStorageName } from '../src/globals/globalVars';
+import { appStorageName } from '../globals/globalVars';
 
 
 function getFavsFromLocalStorage(){
