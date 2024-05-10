@@ -1,3 +1,48 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+.movie-type-select {
+    padding: .75rem;
+    display: block;
+    text-align: center;
+    background-color: $secondaryColor;
+
+    select {
+        text-align: center;
+        width: 90%;
+        background-color: $fontColorDark;
+    }
+}
+
 .movie-type-btns {
-    margin: auto;
+    margin: 1rem auto;
+    padding: .5rem;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: $secondaryColor;
+
+    button {
+        border: none;
+        padding: .375rem;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}
+
+@include mediaQuery(45.25em) {
+    .movie-type-select {
+        display: none;
+    }
+
+    .movie-type-btns {
+        display: flex;
+    }
+}
+
+@include mediaQuery(64em) {
+    .movie-type-btns {
+        padding: 1rem;
+        width: 64rem;
+    }
 }

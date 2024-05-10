@@ -13,7 +13,7 @@ function PageHome() {
           const response = await fetch(`${movieEndpoint}${selectType}?api_key=${apiKey}`);
           let data = await response.json();
           setMovies(data.results);
-          console.log(data.results);
+          console.log(data);
 
           if (movieType == "now_playing") {
             setHeroCarousel(data.results);
@@ -32,6 +32,14 @@ function PageHome() {
             <section>
                 <Hero movies={heroCarousel} />
             </section>
+            <div className="movie-type-select">
+                <select onChange={(event) => handleMovieTypeChange(event.target.value)}>
+                    <option value="now_playing">Now Playing</option>
+                    <option value="popular">Popular</option>
+                    <option value="upcoming">Upcoming</option>
+                    <option value="top_rated">Top Rated</option>
+                </select>
+            </div>
             <div className="movie-type-btns">
                 <button onClick={() => handleMovieTypeChange("now_playing")}>Now Playing</button>
                 <button onClick={() => handleMovieTypeChange("popular")}>Popular</button>
