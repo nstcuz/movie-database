@@ -6,6 +6,7 @@ import Thumbnail from "../components/Thumbnail";
 function PageHome() {
     const [movies, setMovies] = useState([]);
     const [movieType, setMovieType] = useState("now_playing");
+    const [heroCarousel, setHeroCarousel] = useState();
 
     useEffect(() => {
         const fetchMovies = async (selectType) => {
@@ -13,6 +14,10 @@ function PageHome() {
           let data = await response.json();
           setMovies(data.results);
           console.log(data.results);
+
+          if (movieType == "now_playing") {
+            setHeroCarousel(data.results);
+          } 
         };
 
         fetchMovies(movieType);
@@ -56,7 +61,7 @@ function PageHome() {
     return (
         <main>
             <section>
-                <Hero />
+                <Hero movies={heroCarousel} />
             </section>
             <div className="movie-type-btns">
                 <button onClick={() => handleMovieTypeChange("now_playing")}>Now Playing</button>
