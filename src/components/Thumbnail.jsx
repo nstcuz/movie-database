@@ -2,28 +2,50 @@
 import { useState } from 'react';
 import FavoriteBtn from './FavoriteBtn';
 import { truncateTitle, truncateOverview, formatRatingPercentage } from '../globals/globalVars';
+import { useDispatch } from 'react-redux';
+import { addFav, deleteFav } from '../../favs/favSlices.jsx';
 
-function Thumbnail({ title, release_date, overview, rating, image }) {
+
+function Thumbnail({ title, release_date, overview, rating, image, movie }) {
+  if (!movie) {
+   
+    return null;
+  }
   const [isFavorited, setIsFavorited] = useState(false);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-
   const dispatch = useDispatch();
 
-//pass whole movie thumbnail 
   const toggleFavorite = () => {
-
-        if(addToFav === true){
-            dispatch(addFav(movie));
-        }else{
-            dispatch(deleteFav(movie));
-        
+    setIsFavorited(prevState => !prevState);
+    if (!isFavorited) {
+      handleAddFav();
+    } else {
+      handleRemoveFav();
     }
   };
 
+  const handleAddFav = (movie) => {
+    dispatchFavAction(true, movie);
+  };
+
+  const handleRemoveFav = (movie) => {
+    dispatchFavAction(false, movie);
+  };
+
+  const dispatchFavAction = (isAdding) => {
+    if (isAdding) {
+      dispatch(addFav(movie));
+      // Dispatch action to add to favorites
+      console.log("Adding to favorites:");
+    } else {
+      // Dispatch action to remove from favorites
+      dispatch(deleteFav(movie));
+      console.log("Removing from favorites:");
+    }
+  };
   const toggleOverlay = () => {
     setIsOverlayVisible(prevState => !prevState);
   };
-
   return (
     <div className="thumbnail-container">
       <div  className="poster" 

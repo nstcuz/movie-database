@@ -1,9 +1,21 @@
 import React from "react";
 
-function FavoriteBtn({ isFavorited, toggleFavorite }) {
+function FavoriteBtn({ isFavorited, toggleFavorite, movie }) {
     const heartFill = isFavorited ? "#f7cd7b" : "#ffffff";
 
+    function handleAddFav(){
+      toggleFavorite();
+      handleFavClick(true, movie);
+  }
+
+  function handleRemoveFav(){
+    toggleFavorite();
+      handleFavClick(false, movie);
+  }
+
+
     return (
+      
         <button className="fav-heart" onClick={toggleFavorite}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248.69 235.93">
             <path fill={heartFill}
@@ -14,5 +26,7 @@ function FavoriteBtn({ isFavorited, toggleFavorite }) {
         </button>
     );
 }
-
+FavoriteBtn.defaultProps = {
+  remove: false
+}
 export default FavoriteBtn;

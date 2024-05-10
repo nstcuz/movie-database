@@ -44,6 +44,7 @@ function PageHome() {
                         overview={movie.overview}
                         rating={movie.vote_average}
                         image={movie.poster_path}
+                        movie={movie}
                     />
                 ))}
 			</section>
