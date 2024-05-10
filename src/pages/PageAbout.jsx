@@ -1,6 +1,5 @@
 import logo from '../images/TMDb-logo.svg';
 import { NavLink } from 'react-router-dom';
-
 import '../scss/styles.scss'
 
 const About = () => {

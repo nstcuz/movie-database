@@ -8,7 +8,11 @@
 @use 'nav';
 
 // Main styles
+@use 'hero';
 @use 'thumbnail';
+@use 'poster-overlay';
+@use 'rating';
+@use 'movie-tab-bar';
 
 // Footer styles
 @use 'footer';

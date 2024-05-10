@@ -30,8 +30,8 @@ $tabletFooter: .625rem;
 
 //mobile font size
 $MobileNav: $destopMoreInfo;
-$mobileMovieText:.875rem;
-$mobileMoreInfo:.8125rem;
+$mobileMovieText: 1rem;
+$mobileMoreInfo:.875rem;
 $mobileFooter: $tabletFooter;
 
 $h1Mobile: 1rem;
@@ -40,3 +40,6 @@ $h1Tablet: 1.25rem;
 $h1SpanTablet: .625rem; 
 $h1Desktop: 2.375rem;
 $h1SpanDesktop: 1.25rem;
+
+$ratingFontSize: 1.25rem;
+$ratingFontSizeDesktop: 1.5rem;
