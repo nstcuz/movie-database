@@ -2,20 +2,22 @@
 @use 'mixins' as *;
 
 .thumbnail-section {
-    scroll-padding-bottom: 5rem;
+    margin: 1rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    row-gap: 1.75rem;
+    column-gap: .625rem;
 }
 
 .thumbnail-container {
     border: 1px solid $highlightColor;
-    margin: .5rem;
+    // margin: .5rem;
     display: flex;
     flex-direction: column;
     position: relative;
-    max-width: 8.625rem;
+    max-width: 8.5rem;
     height: 19.5rem;
     background-color: $fontColorDark;
     color: $fontColorLight;
@@ -77,7 +79,8 @@
 
 @include mediaQuery(64rem) {
     .thumbnail-section {
-        margin: auto;
+        margin: 1rem auto;
         width: 1000px;
+        gap: 1rem;
     }
 }

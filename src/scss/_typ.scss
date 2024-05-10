@@ -47,6 +47,23 @@ a {
     }        
 }
 
+//Movie tab bar
+.movie-type-select select,
+.movie-type-btns button {
+    font-family: $navFont;
+    font-size: $MobileNav;
+    text-transform: uppercase;
+    color: $fontColorLight;
+
+    @include mediaQuery(45.25em) {
+        font-size: $tabletSubNav;
+    }
+
+    &:hover, &:focus, &:active {
+        color: $fontColorCheese;
+    }
+}
+
 footer{
     color: $fontColorLight;
 }
