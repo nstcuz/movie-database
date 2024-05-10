@@ -22,37 +22,6 @@ function PageHome() {
         setMovieType(type);
     };
 
-    const truncateTitle = ( title, maxLength) => {
-        //Add '...' if the original overview has more words than maxLength
-        if (title.length > maxLength) {
-            return title.substring(0, maxLength) + '...';
-        }
-        return title;
-    }
-
-    const truncateOverview = ( overview, maxWords ) => {
-        //Split overview into array of words
-        const words = overview.split(' ');
-        //Select the desired number of words
-        const slicedWords = words.slice(0, maxWords);
-        //Join selected words back into string
-        const truncatedOverview = slicedWords.join(' ');
-        //Add '...' if the original overview has more words than maxWords
-        if (words.length > maxWords) {
-          return truncatedOverview + '...';
-        }
-        return truncatedOverview;
-    }
-
-    const formatRatingPercentage = ( voteAverage ) => {
-        if ( voteAverage === 0 ) {
-            return "NR"; //For upcoming movies that have no ratings
-        }
-        //Converts rating to percentage and rounds to nearest integer
-        const percentage = Math.round(voteAverage * 10) + '%';
-        return percentage;
-    }
-
     return (
         <main>
             <section>
@@ -68,10 +37,10 @@ function PageHome() {
                 {movies.map(movie => (
                     <Thumbnail
                         key={movie.id}
-                        title={truncateTitle(movie.title, 32)}
+                        title={movie.title}
                         release_date={movie.release_date}
-                        overview={truncateOverview(movie.overview, 12)}
-                        rating={formatRatingPercentage(movie.vote_average)}
+                        overview={movie.overview}
+                        rating={movie.vote_average}
                         image={movie.poster_path}
                     />
                 ))}
