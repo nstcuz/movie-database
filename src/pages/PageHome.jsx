@@ -34,7 +34,7 @@ function PageHome() {
                 <button onClick={() => handleMovieTypeChange("top_rated")}>Top Rated</button>
             </div>
 			<section className="thumbnail-section">
-                {movies.map(movie => (
+                {movies.slice(0, 18).map(movie => (
                     <Thumbnail
                         key={movie.id}
                         title={movie.title}
