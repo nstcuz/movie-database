@@ -64,6 +64,8 @@ function PageHome() {
                 <button onClick={() => handleMovieTypeChange("upcoming")}>Upcoming</button>
                 <button onClick={() => handleMovieTypeChange("top_rated")}>Top Rated</button>
             </div>
+
+            {/* /grab this section 67-78 */}
 			<section className="thumbnail-section">
                 {movies.map(movie => (
                     <Thumbnail

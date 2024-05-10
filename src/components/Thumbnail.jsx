@@ -8,8 +8,17 @@ function Thumbnail({ title, release_date, overview, rating, image }) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
+  const dispatch = useDispatch();
+
+//pass whole movie thumbnail 
   const toggleFavorite = () => {
-    setIsFavorited(prevState => !prevState);
+
+        if(addToFav === true){
+            dispatch(addFav(movie));
+        }else{
+            dispatch(deleteFav(movie));
+        
+    }
   };
 
   const toggleOverlay = () => {
@@ -34,6 +43,7 @@ function Thumbnail({ title, release_date, overview, rating, image }) {
       </div>
       <h3>{title}</h3>
       <p class="date">{release_date}</p>
+
 
       <div className="btn-container">
         {/* href to link dynamically to single details */}
