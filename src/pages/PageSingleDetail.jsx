@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { movieEndpoint } from '../globals/globalVars';
-import FavoriteBtn from '../components/FavoriteBtn';
 const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
-// import Header from '../components/Header';
-// import Footer from '../components/Footer';
-// import FavoriteBtn from '../components/FavoriteBtn';
+import FavoriteBtn from '../components/FavoriteBtn';
 
-function App() {
+function SingleDetail() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -31,23 +28,20 @@ function App() {
   }, []);
 
   return (
-    <div>
-      {/* <Header /> */}
+    <div className='single-details'>
       {movie && (
-        <section>
+        <section className='title-details'>
           <h2>{movie.title}</h2>
           <p>{movie.release_date}</p>
-          <div>
             <p>{movie.vote_average}</p>
                 {movie.genres && (
                     <ul>
                     {movie.genres.map((genre) => (
-                        <li key={genre.id}>{genre.name}</li>
+                        <li key={genre.id}>{genre.name} </li>
                     ))}
                     </ul>
                 )}
-          {/* <FavoriteBtn /> */}
-          </div>
+          <FavoriteBtn />
         </section>
       )}
       <section className="movie-card">
@@ -55,9 +49,8 @@ function App() {
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
       </section>
-      {/* <Footer /> */}
     </div>
   );
 }
 
-export default App;
+export default SingleDetail;
