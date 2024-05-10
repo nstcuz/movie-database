@@ -36,7 +36,7 @@ function PageHome() {
 
             {/* /grab this section 67-78 */}
 			<section className="thumbnail-section">
-                {movies.map(movie => (
+                {movies.slice(0, 18).map(movie => (
                     <Thumbnail
                         key={movie.id}
                         title={movie.title}

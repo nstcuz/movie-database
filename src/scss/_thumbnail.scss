@@ -1,6 +1,8 @@
 @use 'vars' as *;
+@use 'mixins' as *;
 
 .thumbnail-section {
+    scroll-padding-bottom: 5rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -8,7 +10,7 @@
 }
 
 .thumbnail-container {
-    border: 1px solid $fontColorDark;
+    border: 1px solid $highlightColor;
     margin: .5rem;
     display: flex;
     flex-direction: column;
@@ -26,7 +28,7 @@
         font-size: $mobileMovieText;
         font-weight: 500;
         font-variation-settings: $thinFont;
-        line-height: 1.35;
+        line-height: 1.2;
     }
 
     p:not(.details-overlay p) {
@@ -70,5 +72,12 @@
                 display: block;
             }
         }
+    }
+}
+
+@include mediaQuery(64rem) {
+    .thumbnail-section {
+        margin: auto;
+        width: 1000px;
     }
 }
