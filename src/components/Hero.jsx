@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import { truncateTitle, truncateOverview } from '../globals/globalVars';
 import cheeseArrow from '../images/cheese-arrow.svg';
-import clapperHero from '../images/clapper-hero.png';
+import clapperHero from '../images/clapper-hero.svg';
 
 const Hero = ( {movies} ) => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,28 +31,37 @@ const Hero = ( {movies} ) => {
     const nextSlide = () => {
         setCurrentSlide((prevSlide) => (prevSlide + 1) % limitedMovies.length);
     };
+
+    // Get movie data for current slide
+    const currentMovie = limitedMovies && limitedMovies[currentSlide];
     
     return (
-        <div className="hero-carousel">
-            <img className="clapper-hero" src={clapperHero} alt="Clapper board top" />
-            {limitedMovies && limitedMovies.map((movie, index) => (
-                <figure key={movie.id}>
-                    <img src={`http://image.tmdb.org/t/p/w1280${movie.backdrop_path}`} 
-                         alt={movie.title} 
-                         style={{ display: index === currentSlide ? 'block' : 'none' }}
-                         className="hero-images"
-                    />
-                    <figcaption>
-
-                    </figcaption>
-                </figure>
-            ))}
-            <button className="arrow-button arrow-prev" onClick={prevSlide}>
-                <img src={cheeseArrow} alt="Previous" />
-            </button>
-            <button className="arrow-button arrow-next" onClick={nextSlide}>
-                <img src={cheeseArrow} alt="Next" />
-            </button>
+        <section className="hero-carousel">
+            <div className="hero-movie-container">
+                <img className="clapper-hero" src={clapperHero} alt="Clapper board top" />
+                {limitedMovies && limitedMovies.map((movie, index) => (
+                    <figure key={movie.id} className={`movie-slide ${index === currentSlide ? 'active' : ''}`}>
+                        <img
+                            src={`http://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+                            alt={movie.title}
+                            className="hero-images"
+                        />
+                        {/* Figcaption */}
+                        <figcaption className="hero-caption" style={{ display: limitedMovies && limitedMovies[currentSlide] ? 'block' : 'none' }}>
+                            <h2>{currentMovie ? truncateTitle(currentMovie.title) : ''}</h2>
+                            <p>{currentMovie ? truncateOverview(currentMovie.overview, 20) : ''}</p>
+                        </figcaption>
+                        <div className="arrow-buttons">
+                            <button className="arrow-button arrow-prev" onClick={prevSlide}>
+                                <img src={cheeseArrow} alt="Previous" />
+                            </button>
+                            <button className="arrow-button arrow-next" onClick={nextSlide}>
+                                <img src={cheeseArrow} alt="Next" />
+                            </button>
+                        </div>
+                    </figure>
+                ))}
+            </div>
             {/* Pagination dots */}
             <div className="pagination-dots">
                 {limitedMovies && limitedMovies.map((_, index) => (
@@ -62,7 +72,7 @@ const Hero = ( {movies} ) => {
                     ></button>
                 ))}
             </div>
-        </div>
+        </section>
     )
 }
 
