@@ -3,7 +3,7 @@ import { useState } from 'react';
 import FavoriteBtn from './FavoriteBtn';
 import { truncateTitle, truncateOverview, formatRatingPercentage } from '../globals/globalVars';
 import { useDispatch } from 'react-redux';
-import { addFav, deleteFav } from '../../favs/favSlices.jsx';
+import { addFav, deleteFav } from '../favs/favSlices';
 
 
 function Thumbnail({ title, release_date, overview, rating, image, movie }) {
@@ -16,12 +16,15 @@ function Thumbnail({ title, release_date, overview, rating, image, movie }) {
   const dispatch = useDispatch();
 
   const toggleFavorite = () => {
-    setIsFavorited(prevState => !prevState);
-    if (!isFavorited) {
-      handleAddFav();
-    } else {
-      handleRemoveFav();
-    }
+    setIsFavorited(prevState => {
+      const nextState = !prevState;
+      if (!nextState) {
+        handleRemoveFav();
+      } else {
+        handleAddFav();
+      }
+      return nextState;
+    });
   };
 
   const handleAddFav = (movie) => {
@@ -67,7 +70,7 @@ function Thumbnail({ title, release_date, overview, rating, image, movie }) {
       <div className="btn-container">
         {/* href to link dynamically to single details */}
         <p className="more-btn"><a href='#'>More Info</a></p>
-        <FavoriteBtn isFavorited={isFavorited} toggleFavorite={toggleFavorite} />
+        <FavoriteBtn isFavorited={isFavorited} handleFavClick={toggleFavorite} movieObj={movie} />
       </div>
     </div>
   )
