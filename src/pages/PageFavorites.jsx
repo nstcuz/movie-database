@@ -2,7 +2,7 @@ import '../scss/styles.scss'
 import { Link } from 'react-router-dom';
 import { truncateTitle, truncateOverview, formatRatingPercentage, appTitle }  from '../globals/globalVars';
 import { useSelector } from 'react-redux';
-// import Thumbnail from '../components/Thumbnail';
+import Thumbnail from '../components/Thumbnail';
 import isFav from '../../utilities/isFav.js';
 // import { truncateTitle, truncateOverview, formatRatingPercentage } from '../globals/globalVars';
 import {useEffect} from 'react'; 
