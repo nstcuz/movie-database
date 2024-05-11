@@ -43,7 +43,9 @@ function SingleDetail() {
           <h2>{movie.title}</h2>
           <p>{movie.release_date}</p>
           <div className="specific-details">
-            <p>{movie.vote_average}</p>
+            <div className='rating'>
+              <p>{movie.vote_average}</p>
+            </div>
                 {movie.genres && (
                 <ul>
                 {movie.genres.map((genre, i) => (
@@ -68,7 +70,7 @@ function SingleDetail() {
       <section className='overview-details'>
         <h3>Premise:</h3>
         <p>{ movie && movie.overview}</p>
-        <p className='bold-details'>Directors: {credits && credits.crew[1].department}</p>
+        <p className='bold-details'>Directors: {credits && credits.crew[1]}</p>
         {/* <p className='bold-details'>Writers: {credits.crew.}</p> */}
       </section>
 
