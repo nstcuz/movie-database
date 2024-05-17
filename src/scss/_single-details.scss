@@ -1,0 +1,58 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+.movie-details{
+    color: white;
+}
+
+.title-details {
+    background-color: $secondaryColor;
+    margin-top: 2rem;
+    margin-bottom: 1.25rem;
+    padding: 1rem 0;
+    text-align: center;
+    line-height: 1.5;
+
+    .specific-details{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    }
+
+    li{
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+}
+
+.movie-cover-details{
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    img{
+        border: 3px solid $fontColorCheese;
+        width: clamp(240px, 80%, 900px);
+    }
+}
+
+.overview-details{
+    background-color: $fontColorDark;
+    margin: 0 1rem; //footer isnt in doc flow
+    padding: 1rem;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+
+    .bold-details{
+        font-weight: 700;
+    }
+}
+
+.cast-details{
+    margin-bottom: 8rem;
+    h3{
+        text-align: center;
+        background-color: $secondaryColor;
+        line-height: 2.5
+    }
+}
