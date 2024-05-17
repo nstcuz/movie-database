@@ -9,17 +9,18 @@ function SingleDetails() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // make API call to 2 diff endpoint, one for the movie, the other for cast members
   useEffect(() => {
     const fetchMovie = async () => {
       setLoading(true);
       try {
-        const res = await fetch(movieEndpoint + '126?api_key=' + apiKey);
+        const res = await fetch(`${movieEndpoint}519182?api_key=${apiKey}`);
         const data = await res.json();
         setMovie(data);
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching data:', err);
-        setError(err);
+        console.error('error fetching data:', err);
+        setError(err.message);
         setLoading(false);
       }
     };
@@ -27,13 +28,13 @@ function SingleDetails() {
     const fetchCredits = async () => {
       setLoading(true);
       try {
-        const res = await fetch(movieEndpoint + '126/credits?api_key=' + apiKey);
+        const res = await fetch(`${movieEndpoint}519182/credits?api_key=${apiKey}`);
         const data = await res.json();
         setCredits(data);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching data:', err);
-        setError(err);
+        setError(err.message);
         setLoading(false);
       }
     };
@@ -42,11 +43,30 @@ function SingleDetails() {
     fetchCredits();
   }, []);
 
+  // horizontal scrolling for cast members
+  useEffect(() => {
+    const cardContainer = document.querySelector('.card-container');
+    if (!cardContainer) {
+      // this console error thing is sure cool, never knew about it 
+      console.error('card container not found');
+      return;
+    }
+    const handleWheel = (event) => {
+      event.preventDefault();
+      cardContainer.scrollLeft += event.deltaY;
+    };
+
+    cardContainer.addEventListener('wheel', handleWheel);
+    return () => {
+      cardContainer.removeEventListener('wheel', handleWheel);
+    };
+  }, [credits]);
+
   return (
     <div className='movie-details'>
       {movie && (
         <section className='title-details'>
-          <h2>{movie.title}</h2>
+          <h1 className='.bold-details'>{movie.title}</h1>
           <p>{movie.release_date}</p>
           <div className="specific-details">
             <p>{movie.vote_average}</p>
@@ -72,24 +92,30 @@ function SingleDetails() {
       </section>
 
       <section className='overview-details'>
-        <h3>Premise:</h3>
+        <h2>Premise:</h2>
         <p>{movie && movie.overview}</p>
         <p className='bold-details'>Directors: </p>
         <p className='bold-details'>Writers: </p>
       </section>
 
       <section className='cast-details'>
-        <h3>Meet the Cast</h3>
+        <h2>Meet the Cast</h2>
         {credits && credits.cast && (
-          <ul>
+          <section className='card-container'>
             {credits.cast.map((member) => (
-              <li key={member.id}>
-                <p>{member.name} as {member.character}</p>
-              </li>
+              <div className='cast-card' key={member.id}>
+                <img src={`https://image.tmdb.org/t/p/w500${member.profile_path}`} alt={member.name} />
+                <h2>{member.name}</h2>
+                <p>{member.character}</p>
+              </div>
             ))}
-          </ul>
+          </section>
         )}
       </section>
+
+      <div className='button-container'>
+        <button className="return-home">Return Home</button>
+      </div>
     </div>
   );
 }

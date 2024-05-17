@@ -2,21 +2,34 @@
 @use 'mixins' as *;
 
 .movie-details{
-    color: white;
+    color: $fontColorLight; 
+    font-family: $bodyFont;
+    font-size: $mobileMoreInfo;
+
+    h1, h2, h3 {
+        font-size: $h1Mobile;
+        font-family: $bodyFont;
+        padding: 0;
+    }
+
+    .bold-details{
+        font-weight: 700;
+    }
 }
 
 .title-details {
     background-color: $secondaryColor;
-    margin-top: 2rem;
-    margin-bottom: 1.25rem;
-    padding: 1rem 0;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
     text-align: center;
-    line-height: 1.5;
+    line-height: 1;
+    font-size: $mobileMoreInfo;
+
 
     .specific-details{
-    display: flex;
-    justify-content: space-around;
-    align-items: baseline;
+        display: flex;
+        justify-content: space-around;
+        align-items: baseline;
     }
 
     li{
@@ -28,31 +41,75 @@
 .movie-cover-details{
     display: flex;
     justify-content: center;
-    // align-items: center;
+
     img{
         border: 3px solid $fontColorCheese;
         width: clamp(240px, 80%, 900px);
+        margin: 1.25rem 0;
     }
 }
 
 .overview-details{
-    background-color: $fontColorDark;
-    margin: 0 1rem; //footer isnt in doc flow
+    background-color: $highlightColor;
+    margin: 0 1rem;
     padding: 1rem;
     line-height: 1.5;
     display: flex;
     flex-direction: column;
-
-    .bold-details{
-        font-weight: 700;
-    }
 }
 
 .cast-details{
-    margin-bottom: 8rem;
-    h3{
+
+    h2:first-child {
         text-align: center;
         background-color: $secondaryColor;
-        line-height: 2.5
+        font-size: $h1Mobile;
+        line-height: 2.5;
+        margin: 1rem 0; 
+    }
+
+    h2 {
+        font-size: $h1Mobile;
+    }
+
+    .card-container {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+      
+        .cast-card {
+            max-width: 125px;
+            background-color: $highlightColor;
+            flex: 0 0 auto;
+            margin-right: 16px;
+            text-align: center;
+            text-wrap: wrap;
+        }
+
+        img {
+            max-width: 125px;
+        }
+
+        p {
+            font-style: italic;
+            font-size: $mobileMoreInfo;
+        }
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .return-home {
+        color: $fontColorCheese;
+        background-color: $highlightColor;
+        border: none;
+        padding: 1rem;
+        margin: 2rem; 
+        text-transform: uppercase;
+        font-weight: 700;
     }
 }
