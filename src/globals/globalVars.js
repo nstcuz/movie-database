@@ -1,7 +1,9 @@
 export const appTitle = 'Cheeseboard Cinema';
 export const appStorageName = 'movie';
 export const movieEndpoint = 'https://api.themoviedb.org/3/movie/';
-export const movieSearch = 'https://api.themoviedb.org/3/search/movie';
+export const movieSearch = 'https://api.themoviedb.org/3/search/movie'; // Connect to API for search function
+
+// Connect to hidden API key
 export const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
 
 export const truncateTitle = ( title, maxLength) => {
