@@ -38,7 +38,7 @@ export const favsSlice = createSlice({
       state.items = newFavs;
     },
     deleteFav: (state, action) => {
-      const itemsCopy = [...state.items];
+      const itemsCopy = state.items;
       itemsCopy.splice(getIndex(action.payload, state.items), 1);
       localStorage.setItem(appStorageName, JSON.stringify(itemsCopy))
       // Redux Toolkit allows us to write "mutating" logic in reducers. It

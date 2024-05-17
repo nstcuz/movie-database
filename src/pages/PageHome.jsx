@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { movieEndpoint, apiKey } from '../globals/globalVars';
 import Hero from '../components/Hero';
 import Thumbnail from "../components/Thumbnail";
-
+import isFav from '../../utilities/isFav';
 function PageHome() {
     const [movies, setMovies] = useState([]);
     const [movieType, setMovieType] = useState("now_playing");
@@ -26,6 +27,8 @@ function PageHome() {
     const handleMovieTypeChange = (type) => {
         setMovieType(type);
     };
+
+    const favs = useSelector((state) => state.favs.items);
 
     return (
         <main>
@@ -52,12 +55,8 @@ function PageHome() {
                 {movies.slice(0, 18).map(movie => (
                     <Thumbnail
                         key={movie.id}
-                        title={movie.title}
-                        release_date={movie.release_date}
-                        overview={movie.overview}
-                        rating={movie.vote_average}
-                        image={movie.poster_path}
                         movie={movie}
+                        isFav={isFav(favs, null, movie.id)}
                     />
                 ))}
 			</section>
