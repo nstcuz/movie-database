@@ -13,7 +13,7 @@ function isFav(arr, path, id){
     }
 
 
-    return arr?.some((obj) => obj.id === id);
+    return arr.some((obj) => obj.id === id);
 
 }
 
