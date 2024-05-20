@@ -2,57 +2,65 @@
 @use 'mixins' as *;
 
 .fav-container{
-    text-align: center;
-  
-    h2{
-        padding: 1rem;
-        margin-top: 20px;
-        color: $fontColorLight;
-        flex-direction: none
-    }
-    p{
-        // padding: 2rem;
-        // background-color: $fontColorDark;
-        // color: $fontColorLight;
-        // max-width: 800px;
-        // text-align: center;
-        // font-size: 1rem;
-        // margin: 1rem 1rem 1rem 1rem;
-    }
-    .heading-fav{
-        background-color: $secondaryColor;
-        
-    }
-    .fav-body{
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /* Vertically center */
-        align-items: center; /* Horizontally center */
-        text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .heading-fav {
+        h2{
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background-color: $secondaryColor;
+            color: $fontColorLight;
+            width: 100%;
+            text-align: center;
+        }
     }
 
+    .paragraph-container {
+        margin: 1rem;
+        background-color: $fontColorDark;
+        .fav-p {
+             margin: 1rem;
+             padding: 1rem;
+             color: $fontColorLight;
+             text-align: center;
+            //  font-size: 1rem;
+        }
+    }
+
+    .fav-p {
+        font-size: 1rem;
+    }
 }
 
 @include mediaQuery(42.25em) {
-    .fav-container{
-    h2 {
-        font-size: 1.5rem;
-        
+
+    .heading-fav h2 {
+        font-size: 1.7rem;
     }
 
-    p {
-        font-size: 1.3rem;
+    .paragraph-container{
+        padding: .25rem;
+        .fav-p {
+            margin: .5rem;
+            border: 3px dashed $fontColorLight;
+            padding: 1.5rem;
+        }
     }
-}
+
+    .fav-p {
+        font-size: 3rem;
+    }
 }
 
 @include mediaQuery(64em) {
-    h2 {
+    .heading-fav h2 {
         font-size: 2rem;
-        
     }
 
-    p {
-        font-size: 1.2rem;
+    .fav-p {
+        font-size: 5rem;
+        max-width: 200vh;
     }
 }

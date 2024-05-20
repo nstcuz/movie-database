@@ -1,4 +1,4 @@
-// import "../scss/styles.scss";
+import '../scss/styles.scss'
 import { Link } from "react-router-dom";
 import {
   truncateTitle,
@@ -22,17 +22,21 @@ function PageFavorites() {
   });
 
   return (
-    <main className="fav-container">
-      <section>
+    <main>
+      <section className="fav-container">
         <div className="heading-fav">
           <h2>Favourite Movies</h2>
         </div>
         <div className="content">
           {favs.length < 1 ? (
-            <p className="fav-p">
-              No favourite movies. Return to the <Link to="/">home</Link> page to
-              add some favourite movies.
-            </p>
+            <div className="paragraph-container">
+              <p className="fav-p">
+                That's not <i>gouda</i>, you have no favorites!
+              <br></br>
+              <br></br>
+               Return to the <Link to="/">home</Link> page and start your collection by clicking the hearts on your favorite movies
+              </p>
+            </div>
           ) : (
             <section className="thumbnail-section">
               {favs != null &&

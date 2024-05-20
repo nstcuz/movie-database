@@ -3,6 +3,8 @@
 
 body {
     background-color: $primaryColor;
+    min-height: 100vh;
+    position: relative;
 }
 
 .about-content {
@@ -16,8 +18,6 @@ body {
     background-color: $primaryColor;
     padding-bottom: 5rem;
    
-    
-
     .about-container{
         background-color: $fontColorDark;
     }
