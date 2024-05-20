@@ -1,0 +1,58 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+.fav-container{
+    text-align: center;
+  
+    h2{
+        padding: 1rem;
+        margin-top: 20px;
+        color: $fontColorLight;
+        flex-direction: none
+    }
+    p{
+        // padding: 2rem;
+        // background-color: $fontColorDark;
+        // color: $fontColorLight;
+        // max-width: 800px;
+        // text-align: center;
+        // font-size: 1rem;
+        // margin: 1rem 1rem 1rem 1rem;
+    }
+    .heading-fav{
+        background-color: $secondaryColor;
+        
+    }
+    .fav-body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Vertically center */
+        align-items: center; /* Horizontally center */
+        text-align: center;
+    }
+
+}
+
+@include mediaQuery(42.25em) {
+    .fav-container{
+    h2 {
+        font-size: 1.5rem;
+        
+    }
+
+    p {
+        font-size: 1.3rem;
+    }
+}
+}
+
+@include mediaQuery(64em) {
+    h2 {
+        font-size: 2rem;
+        
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+}
