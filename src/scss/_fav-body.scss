@@ -1,0 +1,66 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+.fav-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .heading-fav {
+        h2{
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background-color: $secondaryColor;
+            color: $fontColorLight;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .paragraph-container {
+        margin: 1rem;
+        background-color: $fontColorDark;
+        .fav-p {
+             margin: 1rem;
+             padding: 1rem;
+             color: $fontColorLight;
+             text-align: center;
+            //  font-size: 1rem;
+        }
+    }
+
+    .fav-p {
+        font-size: 1rem;
+    }
+}
+
+@include mediaQuery(42.25em) {
+
+    .heading-fav h2 {
+        font-size: 1.7rem;
+    }
+
+    .paragraph-container{
+        padding: .25rem;
+        .fav-p {
+            margin: .5rem;
+            border: 3px dashed $fontColorLight;
+            padding: 1.5rem;
+        }
+    }
+
+    .fav-p {
+        font-size: 3rem;
+    }
+}
+
+@include mediaQuery(64em) {
+    .heading-fav h2 {
+        font-size: 2rem;
+    }
+
+    .fav-p {
+        font-size: 5rem;
+        max-width: 200vh;
+    }
+}
