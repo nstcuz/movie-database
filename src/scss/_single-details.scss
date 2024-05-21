@@ -38,22 +38,28 @@
         display: inline-block;
         margin-right: 0.5rem;
     }
+
+}
+
+.rating-placement {
+    position: relative; 
+    margin-top: 16px;
 }
 
 // movie poster
-
 .movie-detail-wrapper {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 
-    .movie-cover-details {
+    .movie-cover {
         display: flex;
         justify-content: center;
     
         img {
             border: 3px solid $fontColorCheese;
-            width: clamp(240px, 80%, 600px);
-            min-width: 340px;
+            width: clamp(240px, 70%, 420px);
+            min-width: 240px;
             margin: 1.25rem 0;
         }
     }
@@ -64,9 +70,29 @@
 // movie premise / description
 .overview-details {
     background-color: $highlightColor;
-    margin: 0 1rem;
     padding: 1rem;
     line-height: 1.5;
+    margin: 0 1rem;
+
+    .movie-premise {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid white;
+    }
+
+    .specific-details {
+    // i need to put some kinda width thing here
+    // because the rating is squished on 320px
+    }
+
+    .premise-details {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .overview-widgets {
+        display: none;
+    }
 }
 
 // cast section
@@ -75,7 +101,6 @@
     h2:first-child {
         text-align: center;
         background-color: $secondaryColor;
-        font-size: $h1Mobile;
         line-height: 2.5;
         margin: 2rem 0; 
     }
@@ -84,17 +109,22 @@
         font-size: $h1Mobile;
     }
 
+    .card-container:hover {
+        overflow-x: auto;
+    }
+
     .card-container {
         display: flex;
-        overflow-x: auto;
+        overflow: hidden;
         white-space: nowrap;
         scroll-behavior: smooth;
+        margin: 0 1rem;
       
         .cast-card {
             max-width: 125px;
             background-color: $highlightColor;
             flex: 0 0 auto;
-            margin-right: 16px;
+            margin-right: 1rem;
             text-align: center;
             text-wrap: wrap;
         }
@@ -133,64 +163,75 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 @include mediaQuery(42.25em) {
     .movie-details {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 1rem;
-        margin: 0 2rem;
 
         .title-details {
-            grid-column: span 5;
             display: none;
-        }
-
-        .tablet-desktop-details {
-            grid-column: span 5;
-            display: block;
-            color: $fontColorCheese;
-
-            h1 {
-                color: $fontColorCheese;
-                font-size: $h1Tablet;
-            }
-
-            li {
-                display: inline-block;
-            }
         }
 
         .movie-detail-wrapper {
             grid-column: span 5; 
+            display: flex;
             flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 0 2rem;
+
+            .movie-cover{
+                grid-column: span 1;
+
+                img {
+                    width: clamp(300px, 70%, 500px);
+                }
+            }
+
+           .tablet-desktop-details {
+                grid-column: 2 / span 3;
+                display: block;
+                color: $fontColorCheese;
+
+                h1 {
+                    color: $fontColorCheese;
+                    font-size: $h1Tablet;
+                }
+
+                li {
+                    display: inline-block;
+                }
+            }
         }
 
-        .movie-cover-details {
-            grid-column: span 1;
-        }
 
         .overview-details {
             grid-column: 2 / span 4;
+            margin: 0;
+
+            .tablet-desktop-overview {
+                display: flex;
+            }
+
+            .premise-details {
+
+                .overview-widgets {
+                    display: flex;
+                    gap: 0.5rem;
+                }
+            }
         }
+
+
 
         .cast-details {
             grid-column: span 5;
 
             .card-container {
+                margin: 0 2rem;
+
                 .cast-card {
-                    background-color: $highlightColor;
-                    text-align: center;
+                    max-width: 150px;
                 }
 
                 img {
@@ -219,13 +260,9 @@
 }
   @include mediaQuery(64em) {
     .movie-details {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1rem;
 
-        .title-details {
+        .movie-detail-wrapper {
             grid-column: 2 / span 3;
-            display: none;
         }
 
         .tablet-desktop-details {
@@ -257,11 +294,13 @@
             .card-container {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
-                gap: 16px;
+                column-gap: 36px;
+                row-gap: 2rem;
 
                 .cast-card {
                     background-color: $highlightColor;
                     text-align: center;
+                    width: 150px;
                 }
 
                 img {
@@ -275,24 +314,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
-            .return-home {
-                color: $fontColorCheese;
-                background-color: $highlightColor;
-                border: none;
-                padding: 1rem;
-                margin: 2rem;
-                text-transform: uppercase;
-                font-weight: 700;
-            }
-        }
-
-        // Centering movie-detail-wrapper
-        .movie-detail-wrapper {
-            grid-column: 2 / span 3; // Adjusting grid column
-            display: flex;
-            justify-content: center; // Center horizontally
-            align-items: center; // Center vertically
         }
     }
 }

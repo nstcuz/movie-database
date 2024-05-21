@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { movieEndpoint } from '../globals/globalVars';
+import { movieEndpoint, formatRatingPercentage } from '../globals/globalVars';
 const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
+
 import FavoriteBtn from '../components/FavoriteBtn';
 import clapper from '../images/clapper-hero.svg'; 
 import clapper2 from '../images/white stripes.png'; 
@@ -89,7 +90,9 @@ function SingleDetails() {
           <h1 className='.bold-details'>{movie.title}</h1>
           <p>{movie.release_date}</p>
           <div className="specific-details">
-            <p>{movie.vote_average}</p>
+            <div className='rating rating-placement'>
+              <p>{movie && movie.vote_average + '%'}</p>
+            </div>
             {movie.genres && (
               <ul>
                 {movie.genres.map((genre, i) => (
@@ -106,7 +109,7 @@ function SingleDetails() {
       )}
 
       <section className='movie-detail-wrapper'>
-        <div className="movie-cover-details">
+        <div className="movie-cover">
           {movie ? <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} /> : 'Sorry, the movie has not loaded yet'}
           {loading && <p>Loading...</p>}
           {error && <p>{error}</p>}
@@ -129,13 +132,25 @@ function SingleDetails() {
                   ))}
                 </ul>
               )}
-              </div> {/*specific details*/}
-            </div> {/*tablet-desktop-details*/}
+            </div> {/*specific details*/}
+          </div> {/*tablet-desktop-details*/}
 
           <h2>Premise:</h2>
           <p className='movie-premise'>{movie && movie.overview}</p>
-          <p className='bold-details'>Directors: </p>
-          <p className='bold-details'>Writers: </p>
+          <div className='premise-details'>
+            <div>
+              <p className='bold-details'>Directors: </p>
+              <p className='bold-details'>Writers: </p>
+            </div>
+
+            <div className='overview-widgets'>
+              <div className='rating rating-placement'>
+                <p>{formatRatingPercentage( movie.vote_average )}</p>
+              </div>
+              <FavoriteBtn />
+            </div>
+          </div>
+          {/* </div> */}
         </div> {/*overview details */}
       </section>
 
