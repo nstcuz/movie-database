@@ -48,18 +48,25 @@
         }
     
         .fav-p {
-            font-size: 3rem;
+            font-size: 1.5rem;
         }
     }
     
     @include mediaQuery(64em) {
         .heading-fav h2 {
             font-size: 2rem;
+            text-align: center; /* Center the heading */
         }
-    
+        .paragraph-container {
+            padding: .25rem;
+            max-width: 800px;
+            margin: 0 auto; /* Center the container horizontally */
+        }
         .fav-p {
-            font-size: 5rem;
-            
+            margin: .5rem;
+            padding: 1.5rem;
+            max-width: 800px;
+            text-align: center; /* Center the paragraph text */
         }
     }
 }
