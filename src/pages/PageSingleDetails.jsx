@@ -4,9 +4,7 @@ const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
 import FavoriteBtn from '../components/FavoriteBtn';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-// dumby mode
-// import Clapper from '../components/Clapper'; 
-// import clapper2 from '../images/white stripes.png'; 
+import clapperHero from '../images/clapper-hero.svg'; // Importing clapper board image
 
 function SingleDetails() {
   const [movie, setMovie] = useState(null);
@@ -119,7 +117,7 @@ function SingleDetails() {
 
         <div className='overview-details'>
           <div className='tablet-desktop-details'>
-          <img src="clapper" alt="test" />
+          <img src={clapperHero} alt="clapperboard top" />
             <h1 className='.bold-details'>{movie && movie.title}</h1>
             <div className="specific-details">
               {movie && (

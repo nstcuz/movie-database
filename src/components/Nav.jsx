@@ -30,6 +30,13 @@ const Nav = ({ showNav }) => {
         }
     };
 
+    // Function to handle click event on a search result
+    const handleResultClick = (movieId) => {
+        setQuery(''); // Clear the search query
+        setSearchResults([]); // Clear the search results
+        window.location.href = `/movie/${movieId}`; // Navigate to the details page of the selected movie
+    };
+
     return (
         <nav className={`main-nav ${showNav ? 'show' : ''}`}>
             <ul className="nav-links">
@@ -52,8 +59,7 @@ const Nav = ({ showNav }) => {
                                         <NavLink 
                                             to={`/movie/${result.id}`}
                                             onClick={() => {
-                                                setQuery(''); // Clear the search query
-                                                setSearchResults([]); // Clear the search results
+                                                handleResultClick(result.id)
                                             }}
                                         >
                                             {result.title}
