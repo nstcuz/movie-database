@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function AppRouter() {
     return (
+        // make sure to add this >basename="/cheeseboard-cinema"< before running npm run build AND do not forget to add your htaccess inside the dist
         <BrowserRouter>
             <div className="wrapper">
                 <Header />
