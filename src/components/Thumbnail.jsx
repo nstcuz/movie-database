@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import FavoriteBtn from './FavoriteBtn';
 import { truncateTitle, truncateOverview, formatRatingPercentage } from '../globals/globalVars';
-import { useDispatch } from 'react-redux';
-import { addFav, deleteFav } from '../favs/favSlices.jsx';
+import { Link } from 'react-router-dom';
+
 
 
 function Thumbnail({ isFav, movie }) {
@@ -13,26 +13,7 @@ function Thumbnail({ isFav, movie }) {
   }
 
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-  const dispatch = useDispatch();
 
-  // const toggleFavorite = () => {
-  //   setIsFavorited(prevState => !prevState);
-  //   if (!isFavorited) {
-  //     handleFav();
-  //   } else {
-  //     handleFav();
-  //   }
-  // };
-  
-  const handleFav = (addToFav, movie) => {
-    if(addToFav === true){
-      dispatch(addFav(movie));
-      console.log("Adding to favorites:");
-    } else {
-      dispatch(deleteFav(movie));
-      console.log("Removing from favorites:");
-    }
-  }
 
   // const handleRemoveFav = (movie) => {
   //   dispatchFavAction(false, movie);
@@ -69,13 +50,12 @@ function Thumbnail({ isFav, movie }) {
       <h3>{truncateTitle( movie.title, 36 )}</h3>
       <p className="date">{movie.release_date}</p>
 
-
       <div className="btn-container">
         {/* href to link dynamically to single details */}
-        <p className="more-btn"><a href='#'>More Info</a></p>
+        <p className="more-btn"><Link to={`/movie/${movie.id}`}>More Info</Link></p>
         {isFav ?
-        <FavoriteBtn remove={true} handleFavClick={handleFav} movie={movie}/> :
-        <FavoriteBtn remove={false} handleFavClick={handleFav} movie={movie}/>
+        <FavoriteBtn remove={true}  movie={movie}/> :
+        <FavoriteBtn remove={false}  movie={movie}/>
        }
       </div>
     </div>

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { movieEndpoint, formatRatingPercentage } from '../globals/globalVars';
 const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
-
 import FavoriteBtn from '../components/FavoriteBtn';
-import clapper from '../images/clapper-hero.svg'; 
-import clapper2 from '../images/white stripes.png'; 
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+// dumby mode
+// import Clapper from '../components/Clapper'; 
+// import clapper2 from '../images/white stripes.png'; 
 
 function SingleDetails() {
   const [movie, setMovie] = useState(null);
   const [credits, setCredits] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  let {id} = useParams();
 
   // make API call to 2 diff endpoint, one for the movie, the other for cast members
   useEffect(() => {
@@ -18,7 +21,7 @@ function SingleDetails() {
     const fetchMovie = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${movieEndpoint}519182?api_key=${apiKey}`);
+        const res = await fetch(`${movieEndpoint}${id}?api_key=${apiKey}`);
         const data = await res.json();
         setMovie(data);
         setLoading(false);
@@ -33,7 +36,7 @@ function SingleDetails() {
     const fetchCredits = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${movieEndpoint}519182/credits?api_key=${apiKey}`);
+        const res = await fetch(`${movieEndpoint}${id}/credits?api_key=${apiKey}`);
         const data = await res.json();
         setCredits(data);
         setLoading(false);
@@ -55,7 +58,6 @@ function SingleDetails() {
     const cardContainer = document.querySelector('.card-container');
     //check
     if (!cardContainer) {
-      console.error('card container not found');
       return;
     }
 
@@ -122,7 +124,7 @@ function SingleDetails() {
             <div className="specific-details">
               {movie && (
                 <ul>
-                <li>{movie && movie.release_date}</li>
+                <li>{movie && movie.release_date} &#x2022;</li>
                   {movie.genres.map((genre, i) => (
                     <li key={genre.id}>
                       &nbsp;
@@ -145,12 +147,11 @@ function SingleDetails() {
 
             <div className='overview-widgets'>
               <div className='rating rating-placement'>
-                <p>{formatRatingPercentage( movie.vote_average )}</p>
+                <p>{formatRatingPercentage(movie && movie.vote_average )}</p>
               </div>
               <FavoriteBtn />
             </div>
           </div>
-          {/* </div> */}
         </div> {/*overview details */}
       </section>
 
@@ -168,9 +169,10 @@ function SingleDetails() {
           </section>
         )}
       </section>
-
       <div className='button-container'>
+      <Link to="/">
         <button className="return-home">Return Home</button>
+      </Link>
       </div>
     </div>
   );

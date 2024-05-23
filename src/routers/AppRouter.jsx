@@ -17,7 +17,7 @@ function AppRouter() {
                     <Route path="/" exact element={<PageHome />} />
                     <Route path="/about" element={<PageAbout />} />
                     <Route path="/favorites" element={<PageFavorites />} />
-                    <Route path="/single-details" element={<PageSingleDetails/>} />
+                    <Route path="/movie/:id" element={<PageSingleDetails/>} />
                     {/* <Route path="/" element={} /> */}
                 </Routes>
                 <Footer />
