@@ -1,16 +1,27 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addFav, deleteFav } from "../favs/favSlices";
 
-function FavoriteBtn({ remove, handleFavClick, movie }) {
-  function handleAddFav() {
-    handleFavClick(true, movie);
+
+function FavoriteBtn({ remove, movie }) {
+  const dispatch = useDispatch();
+  
+  const handleFav = (e, type) => {
+
+    e.preventDefault();
+
+    if(type === "add"){
+      dispatch(addFav(movie));
+      console.log("Adding to favorites:");
+    } else if (type === "remove"){
+      dispatch(deleteFav(movie));
+      console.log("Removing from favorites:");
+    }
   }
 
-  function handleRemoveFav() {
-    handleFavClick(false, movie);
-  }
 
   return (
-         <button className="fav-heart" onClick={remove === true ? handleRemoveFav : handleAddFav}>
+         <button className="fav-heart" onClick={remove === true ? (e) => handleFav(e, 'remove'): (e) => handleFav(e, 'add')}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248.69 235.93">
           <path
             fill={remove === true ? "#f7cd7b" : "#ffffff"}
