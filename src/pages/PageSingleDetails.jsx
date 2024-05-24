@@ -38,7 +38,6 @@ function SingleDetails() {
         const data = await res.json();
         setCredits(data);
         setLoading(false);
-        setLoading(false);
       } catch (err) {
         console.error('Error fetching data:', err);
         setError(err.message);
@@ -49,7 +48,7 @@ function SingleDetails() {
     // call them ^
     fetchMovie();
     fetchCredits();
-  }, []);
+  }, [id]);
 
   // horizontal scrolling for cast members
   useEffect(() => {
