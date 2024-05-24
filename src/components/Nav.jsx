@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { movieSearch, apiKey } from '../globals/globalVars'; // Importing API endpoint and API key
 import searchIcon from '../images/iconmonstr-search-thin.svg'; // Importing search icon image
 
 const Nav = ({ showNav }) => {
     const location = useLocation(); // Get the current location using React Router's useLocation hook
+    const navigate = useNavigate(); 
     const [query, setQuery] = useState(''); // State to store the search query entered by the user
     const [searchResults, setSearchResults] = useState([]); // State to store the search results
     const search = <img src={searchIcon} alt="Search icon" />; // Search icon JSX
@@ -34,7 +35,7 @@ const Nav = ({ showNav }) => {
     const handleResultClick = (movieId) => {
         setQuery(''); // Clear the search query
         setSearchResults([]); // Clear the search results
-        window.location.href = `/movie/${movieId}`; // Navigate to the details page of the selected movie
+        navigate(`/movie/${movieId}`); // Navigate to the details page of the selected movie
     };
 
     return (
@@ -56,14 +57,14 @@ const Nav = ({ showNav }) => {
                                 {/* Map through searchResults array and display each search result */}
                                 {searchResults.map((result) => (
                                     <li key={result.id}>
-                                        <NavLink 
+                                        <Link 
                                             to={`/movie/${result.id}`}
-                                            onClick={() => {
+                                            onClick={() => 
                                                 handleResultClick(result.id)
-                                            }}
+                                            }
                                         >
                                             {result.title}
-                                        </NavLink>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
