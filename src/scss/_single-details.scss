@@ -43,7 +43,8 @@
 
 .rating-placement {
     position: relative; 
-    margin-top: 16px;
+    // margin-top: 16px;
+    margin-left: 16px;
 }
 
 // movie poster
@@ -73,12 +74,6 @@
     line-height: 1.5;
     margin: 0 1rem;
 
-    .movie-premise {
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
-        border-bottom: 3px solid white;
-    }
-
     img {
         padding: .25rem;
     }
@@ -91,11 +86,6 @@
         }
         // i need to put some kinda width thing here
         // because the rating is squished on 320px
-    }
-
-    .premise-details {
-        display: flex;
-        justify-content: space-between;
     }
 
     .overview-widgets {
@@ -160,6 +150,7 @@
         border: none;
         padding: 1rem;
         margin: 2rem; 
+        margin-bottom: 6rem;
         text-transform: uppercase;
         font-weight: 700;
     }
@@ -221,12 +212,18 @@
                 display: flex;
             }
 
-            .premise-details {
+            .movie-premise {
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+                border-bottom: 3px solid white;
+            }
 
-                .overview-widgets {
-                    display: flex;
-                    gap: 0.5rem;
-                }
+            .overview-widgets {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0.5rem;
             }
         }
 
@@ -260,12 +257,14 @@
                 border: none;
                 padding: 1rem;
                 margin: 2rem;
+                margin-bottom: 6rem;
                 text-transform: uppercase;
                 font-weight: 700;
             }
         }
     }
 }
+
   @include mediaQuery(64em) {
     .movie-details {
 

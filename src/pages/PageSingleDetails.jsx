@@ -22,6 +22,7 @@ function SingleDetails() {
         const res = await fetch(`${movieEndpoint}${id}?api_key=${apiKey}`);
         const data = await res.json();
         setMovie(data);
+        console.log(data);
         setLoading(false);
       } catch (err) {
         console.error('error fetching data:', err);
@@ -135,19 +136,12 @@ function SingleDetails() {
           </div> {/*tablet-desktop-details*/}
 
           <h2>Premise:</h2>
-          <p className='movie-premise'>{movie && movie.overview}</p>
-          <div className='premise-details'>
-            <div>
-              <p className='bold-details'>Directors: </p>
-              <p className='bold-details'>Writers: </p>
+          <p className='movie-premise'>{movie && movie.overview !== "" ? movie.overview : "Sorry, we do not currently have the data you are looking for. As this site uses TMDB's database, the data wont be avalible until its updated on their end"}</p>
+          <div className='overview-widgets'>
+            <div className='rating rating-placement'>
+              <p>{formatRatingPercentage(movie && movie.vote_average )}</p>
             </div>
-
-            <div className='overview-widgets'>
-              <div className='rating rating-placement'>
-                <p>{formatRatingPercentage(movie && movie.vote_average )}</p>
-              </div>
-              <FavoriteBtn />
-            </div>
+            <FavoriteBtn />
           </div>
         </div> {/*overview details */}
       </section>
@@ -156,14 +150,21 @@ function SingleDetails() {
         <h2>Meet the Cast</h2>
         {credits && credits.cast && (
           <section className='card-container'>
-            {credits.cast.map((member) => (
+            {/* cap at 12 Cast members */}
+          {credits.cast.slice(0, 12).map((member) => {
+            // if image is null then skip
+            if (member.profile_path === null) {
+              return null;
+            }
+            return (
               <div className='cast-card' key={member.id}>
                 <img src={`https://image.tmdb.org/t/p/w500${member.profile_path}`} alt={member.name} />
                 <h3>{member.name}</h3>
                 <p>{member.character}</p>
               </div>
-            ))}
-          </section>
+            );
+          })}
+        </section>
         )}
       </section>
       <div className='button-container'>
