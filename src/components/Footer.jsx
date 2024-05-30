@@ -6,7 +6,7 @@ const Footer = () => {
 
     return (
         <footer>
-            {githubIcon}
+            <a href="https://github.com/nstcuz/movie-database" alt="GitHub link">{githubIcon}</a>
             <p>&copy;By 
                 <a href="https://cgtwebdesigns.com/">Cat</a>, 
                 <a href="https://niccousins.com/">Nic</a>, 

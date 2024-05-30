@@ -39,7 +39,7 @@ function PageFavorites() {
             </div>
           ) : (
             <section className="thumbnail-section">
-              {favs != null &&
+              {favs &&
                 favs.length > 0 &&
                 favs.map((movie) => (
                   <Thumbnail
