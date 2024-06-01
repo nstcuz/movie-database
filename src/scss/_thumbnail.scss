@@ -2,12 +2,12 @@
 @use 'mixins' as *;
 
 .thumbnail-section {
-    margin: 1rem;
+    // margin: 1rem;
     padding-bottom: 7rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     row-gap: 1.75rem;
     column-gap: .625rem;
 }
@@ -80,7 +80,7 @@
 
 @include mediaQuery(64em) {
     .thumbnail-section {
-        margin: 1rem auto;
+        margin: auto;
         width: 1000px;
         gap: 1rem;
     }

@@ -30,12 +30,14 @@ function PageFavorites() {
         <div className="content">
           {favs.length < 1 ? (
             <div className="paragraph-container">
-              <p className="fav-p">
-                That's not <i>gouda</i>, you have no favorites!
-              <br></br>
-              <br></br>
-               Return to the <Link to="/">home</Link> page and start your collection by clicking the hearts on your favorite movies
-              </p>
+              <div className="dashed-border">
+                <p className="fav-p">
+                  That's not <em>gouda</em>, you have no favourites!
+                </p>
+                <p className="fav-p">
+                  Return to the <Link to="/">home</Link> page and start your collection by clicking the hearts on your favourite movies
+                </p>
+              </div>
             </div>
           ) : (
             <section className="thumbnail-section">

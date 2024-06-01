@@ -23,6 +23,9 @@ body {
     }
     .about-text{
         margin: 1rem;
+        p {
+          padding: 0rem 2rem;
+        }
     }
     .image-container{
         text-align: center;
@@ -69,7 +72,7 @@ body {
       text-decoration: none;
       transition: color 0.3s ease;
       &:hover {
-        color: $fontColorCheese;
+        text-decoration: underline;
       }
     }
   
@@ -93,7 +96,6 @@ body {
     }
     }
   }
-
 
   @include mediaQuery(64em){
     .about-container{
