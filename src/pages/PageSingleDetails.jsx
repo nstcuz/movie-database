@@ -26,12 +26,12 @@ function SingleDetails() {
     const fetchMovie = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${movieEndpoint}${id}?api_key=${apiKey}`);
-        const data = await res.json();
-        setMovie(data);
+        const res = await fetch(`${movieEndpoint}${id}?api_key=${apiKey}`); // retreive data
+        const data = await res.json(); // convert data
+        setMovie(data); // set data
         setLoading(false);
       } catch (err) {
-        console.error('error fetching data:', err);
+        console.error('error fetching data:', err); // handle errors
         setError(err.message);
         setLoading(false);
       }
@@ -41,18 +41,18 @@ function SingleDetails() {
     const fetchCredits = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${movieEndpoint}${id}/credits?api_key=${apiKey}`);
-        const data = await res.json();
-        setCredits(data);
+        const res = await fetch(`${movieEndpoint}${id}/credits?api_key=${apiKey}`); // retrieve data
+        const data = await res.json(); // conver to JSON format
+        setCredits(data); // set data
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching data:', err);
+        console.error('Error fetching data:', err); // handle errors
         setError(err.message);
         setLoading(false);
       }
     };
 
-    // call them ^
+    // call both when id changes ^
     fetchMovie();
     fetchCredits();
   }, [id]);
@@ -71,7 +71,7 @@ function SingleDetails() {
       cardContainer.scrollLeft += event.deltaY;
     };
 
-  // only work when displayed in mobile 1024px 
+  // only work when displayed within mobile to 1024px 
     const mediaQuery = window.matchMedia('(max-width: 1023px)');
     const applyScrollListener = () => {
       if (mediaQuery.matches) {
@@ -89,12 +89,12 @@ function SingleDetails() {
     };
   }, [credits]);
 
-  // Handler for adding or removing from favorites
+  // handler for adding or removing from favorites
   const handleFavorite = () => {
     if (isFav(favs, null, movie.id)) {
-      dispatch(deleteFav(movie)); // Remove from favorites
+      dispatch(deleteFav(movie)); // remove from favorites
     } else {
-      dispatch(addFav(movie)); // Add to favorites
+      dispatch(addFav(movie)); // add to favorites
     }
   };
 
@@ -110,9 +110,11 @@ function SingleDetails() {
             </div>
             {movie.genres && (
               <ul>
+                {/* display genres */}
                 {movie.genres.map((genre, i) => (
                   <li key={genre.id}>
                     {genre.name}
+                    {/* add a comma after them except for the last one */}
                     {i !== movie.genres.length - 1 ? ',' : ''}
                   </li>
                 ))}
@@ -165,21 +167,18 @@ function SingleDetails() {
         <h2>Meet the Cast</h2>
         {credits && credits.cast && (
           <section className='card-container'>
-            {/* cap at 12 Cast members */}
-          {credits.cast.slice(0, 12).map((member) => {
-            // if image is null then skip to next member
-            if (member.profile_path === null) {
-              return null;
-            }
-            return (
+          {/* cap at 12 Cast members */}
+          {credits.cast
+            .filter(member => member.profile_path !== null)
+            .slice(0, 12)
+            .map(member => (
               <div className='cast-card' key={member.id}>
                 <img src={`https://image.tmdb.org/t/p/w500${member.profile_path}`} alt={member.name} />
                 <h3>{member.name}</h3>
                 <p>{member.character}</p>
               </div>
-            );
-          })}
-        </section>
+            ))}
+          </section>
         )}
       </section>
       <div className='button-container'>
