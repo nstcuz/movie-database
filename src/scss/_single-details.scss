@@ -225,6 +225,11 @@
                 justify-content: space-between;
                 align-items: center;
                 gap: 0.5rem;
+
+                .fav-heart {
+                    margin-bottom: 16px;
+                    margin-right: 16px;
+                }
             }
         }
 
