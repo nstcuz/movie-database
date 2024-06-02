@@ -1,43 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { movieEndpoint, formatRatingPercentage } from '../globals/globalVars';
-import FavoriteBtn from '../components/FavoriteBtn';
-import isFav from '../../utilities/isFav';
-import { addFav, deleteFav } from '../favs/favSlices';
-import clapperHero from '../images/clapper-hero.svg';
+import { movieEndpoint, formatRatingPercentage } from '../globals/globalVars'; // Importing endpoint and formatting function
+import FavoriteBtn from '../components/FavoriteBtn'; // Importing FavoriteBtn component
+import { Link, useParams } from 'react-router-dom'; // Importing Link and useParams from react-router-dom
+import clapperHero from '../images/clapper-hero.svg'; // Importing clapper board image
+import { useSelector, useDispatch } from 'react-redux'; // Importing useSelector and useDispatch hooks from React Redux
+import isFav from '../../utilities/isFav'; // Importing isFav utility function
+import { addFav, deleteFav } from '../favs/favSlices'; // Importing action creators from Redux slice file
 
-const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
+const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY; // Setting API key from environment variable
 
 function SingleDetails() {
-  const [movie, setMovie] = useState(null);
-  const [credits, setCredits] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  let {id} = useParams();
-  const dispatch = useDispatch(); // get dispatch function
+  const [movie, setMovie] = useState(null); // State for movie details
+  const [credits, setCredits] = useState(null); // State for cast/credit details
+  const [loading, setLoading] = useState(false); // State for loading indicator
+  const [error, setError] = useState(''); // State for error message
+  let {id} = useParams(); // Extracting id parameter from URL
+  const dispatch = useDispatch(); // Initializing useDispatch hook to dispatch actions
 
-  // retrieve favourites state using useSelector
+  // Retrieve favorites state using useSelector
   const favs = useSelector((state) => state.favs.items);
 
-  // make API call to 2 diff endpoint, one for the movie, the other for cast members
+  // Fetch movie and cast/credit info from API endpoints
   useEffect(() => {
-    // fetch movie info
+    // Fetch movie info
     const fetchMovie = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${movieEndpoint}${id}?api_key=${apiKey}`); // retreive data
-        const data = await res.json(); // convert data
-        setMovie(data); // set data
+        const res = await fetch(`${movieEndpoint}${id}?api_key=${apiKey}`);
+        const data = await res.json();
+        setMovie(data);
         setLoading(false);
       } catch (err) {
-        console.error('error fetching data:', err); // handle errors
+        console.error('Error fetching movie data:', err);
         setError(err.message);
         setLoading(false);
       }
     };
 
-    // fetch cast/credit info
+    // Fetch cast/credit info
     const fetchCredits = async () => {
       setLoading(true);
       try {
@@ -46,32 +46,31 @@ function SingleDetails() {
         setCredits(data); // set data
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching data:', err); // handle errors
+        console.error('Error fetching credits data:', err);
         setError(err.message);
         setLoading(false);
       }
     };
 
-    // call both when id changes ^
+    // Call the fetch functions
     fetchMovie();
     fetchCredits();
   }, [id]);
 
-  // horizontal scrolling for cast members
+  // Horizontal scrolling for cast members
   useEffect(() => {
     const cardContainer = document.querySelector('.card-container');
-    //check
     if (!cardContainer) {
       return;
     }
 
-  // change scroll wheel to horizontal on .card-container
+    // Change scroll wheel to horizontal on .card-container
     const handleWheel = (event) => {
       event.preventDefault();
       cardContainer.scrollLeft += event.deltaY;
     };
 
-  // only work when displayed within mobile to 1024px 
+    // Apply scroll listener only on mobile (max-width: 1023px)
     const mediaQuery = window.matchMedia('(max-width: 1023px)');
     const applyScrollListener = () => {
       if (mediaQuery.matches) {
@@ -100,6 +99,7 @@ function SingleDetails() {
 
   return (
     <div className='movie-details'>
+      {/* Display movie details */}
       {movie && (
         <section className='title-details'>
           <h1 className='.bold-details'>{movie.title}</h1>
@@ -108,6 +108,7 @@ function SingleDetails() {
             <div className='rating rating-placement'>
               <p>{formatRatingPercentage(movie && movie.vote_average )}</p> 
             </div>
+            {/* Display movie genres */}
             {movie.genres && (
               <ul>
                 {/* display genres */}
@@ -127,6 +128,7 @@ function SingleDetails() {
 
       <section className='movie-detail-wrapper'>
         <div className="movie-cover">
+          {/* Display movie poster */}
           {movie ? <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} /> : 'Sorry, the movie has not loaded yet'}
           {loading && <p>Loading...</p>}
           {error && <p>{error}</p>}
@@ -134,12 +136,14 @@ function SingleDetails() {
 
         <div className='overview-details'>
           <div className='tablet-desktop-details'>
-          <img src={clapperHero} alt="clapperboard top" />
+            {/* Display movie title and release date */}
+            <img src={clapperHero} alt="clapperboard top" />
             <h1 className='.bold-details'>{movie && movie.title}</h1>
             <div className="specific-details">
               {movie && (
                 <ul>
-                <li>{movie && movie.release_date} &#x2022;</li>
+                  <li>{movie && movie.release_date} &#x2022;</li>
+                  {/* Display movie genres */}
                   {movie.genres.map((genre, i) => (
                     <li key={genre.id}>
                       &nbsp;
@@ -149,42 +153,52 @@ function SingleDetails() {
                   ))}
                 </ul>
               )}
-            </div> {/*specific details*/}
-          </div> {/*tablet-desktop-details*/}
+            </div>
+          </div>
 
           <h2>Premise:</h2>
+          {/* Display movie overview */}
           <p className='movie-premise'>{movie && movie.overview !== "" ? movie.overview : "Sorry, we do not currently have the data you are looking for. As this site uses TMDB's database, the data wont be avalible until its updated on their end"}</p>
           <div className='overview-widgets'>
             <div className='rating rating-placement'>
+              {/* Format and display movie rating */}
               <p>{formatRatingPercentage(movie && movie.vote_average )}</p>
             </div>
+            {/* Render FavoriteBtn component */}
             <FavoriteBtn remove={movie && isFav(favs, null, movie.id)} movie={movie} onClick={handleFavorite} />
           </div>
-        </div> {/*overview details */}
+        </div>
       </section>
 
       <section className='cast-details'>
         <h2>Meet the Cast</h2>
+        {/* Display cast members */}
         {credits && credits.cast && (
           <section className='card-container'>
-          {/* cap at 12 Cast members */}
-          {credits.cast
-            .filter(member => member.profile_path !== null)
-            .slice(0, 12)
-            .map(member => (
-              <div className='cast-card' key={member.id}>
-                <img src={`https://image.tmdb.org/t/p/w500${member.profile_path}`} alt={member.name} />
-                <h3>{member.name}</h3>
-                <p>{member.character}</p>
-              </div>
-            ))}
+            {/* Display up to 12 cast members */}
+            {credits.cast.slice(0, 12).map((member) => {
+              // Skip if image is null
+              if (member.profile_path === null) {
+                return null;
+              }
+              return (
+                <div className='cast-card' key={member.id}>
+                  {/* Display cast member image, name, and character */}
+                  <img src={`https://image.tmdb.org/t/p/w500${member.profile_path}`} alt={member.name} />
+                  <h3>{member.name}</h3>
+                  <p>{member.character}</p>
+                </div>
+              );
+            })}
           </section>
         )}
       </section>
+
+      {/* Button to return to home */}
       <div className='button-container'>
-      <Link to="/">
-        <button className="return-home">Return Home</button>
-      </Link>
+        <Link to="/">
+          <button className="return-home">Return Home</button>
+        </Link>
       </div>
     </div>
   );
