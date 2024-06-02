@@ -32,7 +32,8 @@ function PageFavorites() {
         <div className="content">
            {/* Checks if there are faved movies*/}
           {favs.length < 1 ? (
-            <div className="paragraph-container">
+            <div className="paragraph-container">  {/* black box conatiner  */}
+               {/* the dashed border container  */}
               <div className="dashed-border">
                 <p className="fav-p">
                   {/* if there are no favs it displays this  */}
