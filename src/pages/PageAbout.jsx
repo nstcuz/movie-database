@@ -14,8 +14,8 @@ const About = () => {
             <div className='about-text'>
             <p>Cheeseboard Cinema is a movie database where users can search up movie titles based on different catagories, such as genre and popularity.</p>
             <p className="border-bottom">Join and build your collect with our <NavLink to="/favorites">Favorites</NavLink> feature!</p>
-            <p>So... what's with the "cheese" theme?</p>
-            <p>Ever watched something and thought "That's so cheesey"</p>
+            <p>So... what's with the <em>"cheese"</em> theme?</p>
+            <p>Ever watched something and thought <em>"That's so cheesey"</em>?</p>
             <p className="border-bottom">The creator behind Cheeseboard Cinema combined that sentiment and the iconic "clapperboard", which a "cheeseboard" movie database
                 where everyone can create their own list of movies catered to them!
             </p>

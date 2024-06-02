@@ -19,18 +19,25 @@
 
     .paragraph-container {
         margin: 1rem;
+        padding: 2rem 1rem;
         background-color: $fontColorDark;
         .fav-p {
              margin: 1rem;
-             padding: 1rem;
+             padding: .5rem;
              color: $fontColorLight;
              text-align: center;
-            //  font-size: 1rem;
         }
     }
 
     .fav-p {
         font-size: 1rem;
+
+        a {
+            color: $fontColorCheese;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
     @include mediaQuery(42.25em) {
     
@@ -42,13 +49,18 @@
             padding: .25rem;
             .fav-p {
                 margin: .5rem;
-                border: 3px dashed $fontColorLight;
+                
                 padding: 1.5rem;
             }
         }
     
         .fav-p {
             font-size: 1.5rem;
+        }
+
+        .dashed-border {
+            margin: 1rem;
+            border: 3px dashed $fontColorLight;
         }
     }
     
