@@ -1,27 +1,30 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { addFav, deleteFav } from "../favs/favSlices";
+import { useDispatch } from "react-redux"; // Importing the useDispatch hook from React Redux
+import { addFav, deleteFav } from "../favs/favSlices"; // Importing action creators from Redux slice file
 
-
+// Functional component FavoriteBtn with props remove and movie
 function FavoriteBtn({ remove, movie }) {
-  const dispatch = useDispatch();
-  
+  const dispatch = useDispatch(); // Initializing useDispatch hook to dispatch actions
+
+  // Function to handle adding or removing from favorites
   const handleFav = (e, type) => {
+    e.preventDefault(); // Preventing default behavior of the event
 
-    e.preventDefault();
-
-    if(type === "add"){
+    // If type is "add", dispatch addFav action with movie payload
+    if (type === "add") {
       dispatch(addFav(movie));
       console.log("Adding to favorites:");
-    } else if (type === "remove"){
+    } 
+    // If type is "remove", dispatch deleteFav action with movie payload
+    else if (type === "remove") {
       dispatch(deleteFav(movie));
       console.log("Removing from favorites:");
     }
   }
 
-
+  // Returning a button element with SVG icon and onClick event handler
   return (
-      <button className="fav-heart" onClick={remove === true ? (e) => handleFav(e, 'remove'): (e) => handleFav(e, 'add')}>
+      <button className="fav-heart" onClick={remove === true ? (e) => handleFav(e, 'remove') : (e) => handleFav(e, 'add')}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248.69 235.93">
           <path
             fill={remove === true ? "#f7cd7b" : "#ffffff"}
@@ -32,7 +35,10 @@ function FavoriteBtn({ remove, movie }) {
       </button>
   );
 }
+
+// Setting default prop value for remove as false
 FavoriteBtn.defaultProps = {
   remove: false,
 };
-export default FavoriteBtn;
+
+export default FavoriteBtn; // Exporting FavoriteBtn component
