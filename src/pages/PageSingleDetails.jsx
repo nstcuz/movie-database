@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { movieEndpoint, formatRatingPercentage } from '../globals/globalVars';
 import FavoriteBtn from '../components/FavoriteBtn';
-import { Link, useParams } from 'react-router-dom';
-import clapperHero from '../images/clapper-hero.svg'; // Importing clapper board image
-import { useSelector, useDispatch } from 'react-redux';
 import isFav from '../../utilities/isFav';
 import { addFav, deleteFav } from '../favs/favSlices';
+import clapperHero from '../images/clapper-hero.svg';
 
 const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
 
@@ -15,9 +15,9 @@ function SingleDetails() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   let {id} = useParams();
-  const dispatch = useDispatch(); // Get dispatch function
+  const dispatch = useDispatch(); // get dispatch function
 
-  // Retrieve favourites state using useSelector
+  // retrieve favourites state using useSelector
   const favs = useSelector((state) => state.favs.items);
 
   // make API call to 2 diff endpoint, one for the movie, the other for cast members
@@ -29,7 +29,6 @@ function SingleDetails() {
         const res = await fetch(`${movieEndpoint}${id}?api_key=${apiKey}`);
         const data = await res.json();
         setMovie(data);
-        console.log(data);
         setLoading(false);
       } catch (err) {
         console.error('error fetching data:', err);
@@ -107,7 +106,7 @@ function SingleDetails() {
           <p>{movie.release_date}</p>
           <div className="specific-details">
             <div className='rating rating-placement'>
-              <p>{movie && movie.vote_average + '%'}</p>
+              <p>{formatRatingPercentage(movie && movie.vote_average )}</p> 
             </div>
             {movie.genres && (
               <ul>
@@ -119,6 +118,7 @@ function SingleDetails() {
                 ))}
               </ul>
             )}
+            <FavoriteBtn remove={movie && isFav(favs, null, movie.id)} movie={movie} onClick={handleFavorite} />
           </div>
         </section>
       )}
@@ -167,7 +167,7 @@ function SingleDetails() {
           <section className='card-container'>
             {/* cap at 12 Cast members */}
           {credits.cast.slice(0, 12).map((member) => {
-            // if image is null then skip
+            // if image is null then skip to next member
             if (member.profile_path === null) {
               return null;
             }
