@@ -1,0 +1,13 @@
+.fav-heart {
+    padding-inline: 0;
+    border: none;
+    display: block;
+    background-color: transparent;
+    width: 1.75rem;
+    height: auto;
+    float: right;
+
+    svg {
+        display: block;
+    }
+}

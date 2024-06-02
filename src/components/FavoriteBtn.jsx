@@ -21,7 +21,7 @@ function FavoriteBtn({ remove, movie }) {
 
 
   return (
-         <button className="fav-heart" onClick={remove === true ? (e) => handleFav(e, 'remove'): (e) => handleFav(e, 'add')}>
+      <button className="fav-heart" onClick={remove === true ? (e) => handleFav(e, 'remove'): (e) => handleFav(e, 'add')}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248.69 235.93">
           <path
             fill={remove === true ? "#f7cd7b" : "#ffffff"}

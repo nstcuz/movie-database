@@ -77,7 +77,7 @@ const Nav = ({ showNav }) => {
                         <NavLink to="/about" className={location.pathname === '/about' ? 'current-page' : ''}>About</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/favorites" className={location.pathname === '/favorites' ? 'current-page' : ''}>Favorites</NavLink>
+                        <NavLink to="/favorites" className={location.pathname === '/favorites' ? 'current-page' : ''}>Favourites</NavLink>
                     </li>
                 </div>
             </ul>

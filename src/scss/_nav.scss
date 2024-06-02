@@ -10,6 +10,9 @@
     top: 0;
     right: 0;
     cursor: pointer;
+    @include mediaQuery (42.25em) {
+        margin-right: .5rem;
+    }
 
     .hamburger-icon {
         display: inline-block;
@@ -114,15 +117,17 @@
             padding-left: 1rem;
             &::placeholder {
                 text-transform: uppercase;
+                font-family: $bodyFont;
             }
         }
     }
 
     .header-nav-links {
         @include header-flex;
-        gap: 2rem;
+        gap: 3rem;
         @include mediaQuery(64em) {
-            gap: 7rem;
+            gap: 6rem;
+            font-size: 1.25rem;
         }
     }
 }
