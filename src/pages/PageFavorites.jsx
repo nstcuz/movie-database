@@ -6,6 +6,7 @@ import isFav from "../../utilities/isFav.js";
 import { appTitle } from "../globals/globalVars";
 import { setFavorites } from "../favs/favSlices"; // Import the setFavorites action creator
 
+// Gets the 'fav' from the redux
 function PageFavorites() {
   const favs = useSelector((state) => state.favs.items);
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function PageFavorites() {
     // Initialize state with items from local storage if they exist
     const storedFavorites = JSON.parse(localStorage.getItem("favorites"));
     if (storedFavorites && storedFavorites.length > 0) {
+      // dispatch setFavorites action with the stored favs 
       dispatch(setFavorites(storedFavorites));
     }
   }, [dispatch]);
