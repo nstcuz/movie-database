@@ -1,0 +1,85 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+.fav-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .heading-fav {
+        h2{
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background-color: $secondaryColor;
+            color: $fontColorLight;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .paragraph-container {
+        margin: 1rem;
+        padding: 2rem 1rem;
+        background-color: $fontColorDark;
+        .fav-p {
+             margin: 1rem;
+             padding: .5rem;
+             color: $fontColorLight;
+             text-align: center;
+        }
+    }
+
+    .fav-p {
+        font-size: 1rem;
+
+        a {
+            color: $fontColorCheese;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    @include mediaQuery(42.25em) {
+    
+        .heading-fav h2 {
+            font-size: 1.7rem;
+        }
+    
+        .paragraph-container{
+            padding: .25rem;
+            .fav-p {
+                margin: .5rem;
+                
+                padding: 1.5rem;
+            }
+        }
+    
+        .fav-p {
+            font-size: 1.5rem;
+        }
+
+        .dashed-border {
+            margin: 1rem;
+            border: 3px dashed $fontColorLight;
+        }
+    }
+    
+    @include mediaQuery(64em) {
+        .heading-fav h2 {
+            font-size: 2rem;
+            text-align: center; /* Center the heading */
+        }
+        .paragraph-container {
+            padding: .25rem;
+            max-width: 800px;
+            margin: 0 auto; /* Center the container horizontally */
+        }
+        .fav-p {
+            margin: .5rem;
+            padding: 1.5rem;
+            max-width: 800px;
+            text-align: center; /* Center the paragraph text */
+        }
+    }
+}
+

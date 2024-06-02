@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 314.26 59.72">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 314.26 59.72" width="5rem">
   <defs>
     <style>
       .cls-1 {
@@ -80,7 +80,7 @@
     </g>
   </g>
   <g id="Layer_3-2" data-name="Layer 3">
-    <text class="cls-7" transform="translate(58.95 30.81)"><tspan x="0" y="0">Cheeseboa</tspan><tspan class="cls-9" x="129.96" y="0">r</tspan><tspan x="140.33" y="0">d Cinema</tspan></text>
-    <text class="cls-6" transform="translate(60.8 45.21)"><tspan x="0" y="0">MOVIE DATABASE CATERED TO YOU</tspan></text>
+    <text class="cls-7" transform="translate(58.95 30.81)" font-family="PaytoneOne-Regular"><tspan x="0" y="0">Cheeseboard Cinema</tspan></text>
+    <text class="cls-6" transform="translate(60.8 45.21)" font-family="OpenSansItalic-Bold"><tspan x="0" y="0">MOVIE DATABASE CATERED TO YOU</tspan></text>
   </g>
 </svg>

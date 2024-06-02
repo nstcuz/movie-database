@@ -1,18 +1,15 @@
-// import AppRouter from './routers/AppRouter'
-import Header from './components/Header'
-import Footer from './components/Footer'
-
+import { Provider } from 'react-redux'
+import { store } from '../store/store.js'
+import AppRouter from './routers/AppRouter'
 import './scss/styles.scss'
 
 function App() {
 
   return (
     <>
-    <div className="wrapper">
-      <Header />
-
-      <Footer />
-    </div>
+        <Provider store={store}>
+          <AppRouter />
+        </Provider>
     </>
   )
 }

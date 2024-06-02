@@ -1,0 +1,327 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+// wrapper
+.movie-details {
+    color: $fontColorLight; 
+    font-family: $bodyFont;
+    font-size: $mobileMoreInfo;
+
+    h1, h2, h3 {
+        font-size: $h1Mobile;
+        font-family: $bodyFont;
+        padding: 0;
+        margin: 0.25rem;
+    }
+
+    .bold-details{
+        font-weight: 700;
+    }
+}
+
+// title overview for mobile
+.title-details {
+    background-color: $secondaryColor;
+    margin-top: 2rem;
+    padding: 0.25rem 1rem;
+    text-align: center;
+    line-height: 1;
+    font-size: $mobileMoreInfo;
+
+    .specific-details {
+        display: flex;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+
+}
+
+.rating-placement {
+    position: relative; 
+    // margin-top: 16px;
+    margin-left: 16px;
+}
+
+// movie poster
+.movie-detail-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .movie-cover {
+        display: flex;
+        justify-content: center;
+    
+        img {
+            border: 3px solid $fontColorCheese;
+            width: clamp(240px, 70%, 420px);
+            min-width: 240px;
+            margin: 1.25rem 0;
+        }
+    }
+}
+
+
+
+// movie premise / description
+.overview-details {
+    background-color: $highlightColor;
+    line-height: 1.5;
+    margin: 0 1rem;
+
+    img {
+        padding: .25rem;
+    }
+
+    .specific-details, h1, h2, ul, p {
+        padding: .25rem 1rem;
+        margin: 0;
+        ul {
+            padding: 0;
+        }
+        // i need to put some kinda width thing here
+        // because the rating is squished on 320px
+    }
+
+    .overview-widgets {
+        display: none;
+    }
+}
+
+// cast section
+.cast-details {
+
+    h2:first-child {
+        text-align: center;
+        background-color: $secondaryColor;
+        line-height: 2.5;
+        margin: 2rem 0; 
+    }
+
+    h2 {
+        font-size: $h1Mobile;
+    }
+
+    .card-container:hover {
+        overflow-x: auto;
+    }
+
+    .card-container {
+        display: flex;
+        overflow: hidden;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+        margin: 0 1rem;
+      
+        .cast-card {
+            max-width: 125px;
+            background-color: $highlightColor;
+            flex: 0 0 auto;
+            margin-right: 1rem;
+            text-align: center;
+            text-wrap: wrap;
+        }
+
+        img {
+            max-width: 125px;
+        }
+
+        p {
+            font-style: italic;
+            font-size: $mobileMoreInfo;
+        }
+    }
+}
+
+// return to home button
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .return-home {
+        color: $fontColorCheese;
+        background-color: $highlightColor;
+        border: none;
+        padding: 1rem;
+        margin: 2rem; 
+        margin-bottom: 6rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+}
+
+.tablet-desktop-details {
+    display: none;
+}
+
+
+
+@include mediaQuery(42.25em) {
+    .movie-details {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+
+        .title-details {
+            display: none;
+        }
+
+        .movie-detail-wrapper {
+            grid-column: span 5; 
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 0 2rem;
+            max-width: 63.75rem;
+
+            .movie-cover{
+                grid-column: span 1;
+
+                img {
+                    width: clamp(300px, 70%, 500px);
+                }
+            }
+
+           .tablet-desktop-details {
+                grid-column: 2 / span 3;
+                display: block;
+                color: $fontColorCheese;
+
+                h1 {
+                    color: $fontColorCheese;
+                    font-size: $h1Tablet;
+                }
+
+                li {
+                    display: inline-block;
+                }
+            }
+        }
+
+
+        .overview-details {
+            grid-column: 2 / span 4;
+            margin: 0;
+
+            .tablet-desktop-overview {
+                display: flex;
+            }
+
+            .movie-premise {
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+                border-bottom: 3px solid white;
+            }
+
+            .overview-widgets {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
+
+
+
+        .cast-details {
+            grid-column: span 5;
+
+            .card-container {
+                margin: 0 2rem;
+
+                .cast-card {
+                    max-width: 150px;
+                }
+
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+
+        .button-container {
+            grid-column: span 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .return-home {
+                color: $fontColorCheese;
+                background-color: $highlightColor;
+                border: none;
+                padding: 1rem;
+                margin: 2rem;
+                margin-bottom: 6rem;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+  @include mediaQuery(64em) {
+    .movie-details {
+
+        .movie-detail-wrapper {
+            grid-column: 2 / span 3;
+        }
+
+        .tablet-desktop-details {
+            grid-column: 2 / span 3;
+            display: block;
+            color: $fontColorCheese;
+
+            h1 {
+                color: $fontColorCheese;
+                font-size: $h1Tablet;
+            }
+
+            li {
+                display: inline-block;
+            }
+        }
+
+        .movie-cover-details {
+            grid-column: 2 / span 1;
+        }
+
+        .overview-details {
+            grid-column: 3 / span 2;
+        }
+
+        .cast-details {
+            grid-column: 2 / span 3;
+
+            .card-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+                column-gap: 36px;
+                row-gap: 2rem;
+
+                .cast-card {
+                    background-color: $highlightColor;
+                    text-align: center;
+                    width: 150px;
+                }
+
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+
+        .button-container {
+            grid-column: 2 / span 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

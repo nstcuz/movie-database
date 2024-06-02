@@ -1,5 +1,58 @@
 @use 'vars' as *;
+@use 'mixins' as *;
 
 header {
     background-color: $secondaryColor;
+    .logo {
+    @include logo-flex;
+    gap: .5rem;
+        span {
+            @include column-flex;
+            padding-top: .25rem;
+        }
+    }
+    img {
+        width: 3rem;
+        padding: .5rem 0;
+        @include mediaQuery(64em) {
+            width: 5rem;
+        }
+    }
+    a {
+        font-family: $navFont;
+        letter-spacing: .0625rem;
+    }
+    h1 {
+        text-transform: none;
+        letter-spacing: .125rem;
+    }
+}
+
+.header-contents {
+    width: 95%;
+    max-width: 75rem;
+    @include header-flex;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.header-nav-links li a {
+    position: relative;
+    @include cheese-arrow('../images/cheese-arrow.svg');
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background-color: $secondaryColor;
+    color: $fontColorLight;
+    z-index: 2;
+    li {
+        padding: .25rem;
+        border-bottom: 1px solid $highlightColor;
+        &:last-child {
+            border-bottom: none;
+        }
+    }
 }

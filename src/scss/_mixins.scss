@@ -1,1 +1,46 @@
-// Grid/Flex stylings
+// Grid/Flex styling
+
+@mixin column-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin logo-flex {
+    display: flex;
+}
+
+@mixin header-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@mixin mediaQuery ($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin cheese-arrow($arrow-image-url) {
+    &::after {
+        content: '';
+        position: absolute;
+        top: 30%;
+        right: 100%;
+        margin-right: .5rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        background-image: url($arrow-image-url);
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: rotateY(180deg);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    &:hover::after,
+    &:focus::after,
+    &:active::after,
+    &.current-page::after {
+        opacity: 1;
+    }
+}

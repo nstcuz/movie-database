@@ -1,5 +1,20 @@
 @use 'vars' as *;
 
 footer {
+    width: 100%;
     background-color: $secondaryColor;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: .5rem;
+    
+    img {
+        width: 2rem;
+        padding-top: .5rem;
+    }
+
+    a {
+        margin: .25rem;
+        text-transform: none;
+    }
 }

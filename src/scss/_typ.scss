@@ -1,30 +1,68 @@
 // Font styles and sizes
-//Nat to add font sizes to appropriate headings/paragraphs
+
 @use 'vars' as *;
+@use 'mixins' as *;
 
 h1 {
     font-family: $navFont;
-    
+    font-size: $h1Mobile;
+    color: $fontColorLight;
+    padding-top: 0.5rem;
+    @include mediaQuery(45.25em) {
+        font-size: $h1Tablet;
+    }
+    @include mediaQuery(64em) {
+        font-size: $h1Desktop;
+    }
     span {
         font-family: $bodyFont;
         text-transform: uppercase;
         font-style: italic;
+        font-size: $h1SpanMobile;
+        @include mediaQuery(45.25em) {
+            font-size: $h1SpanTablet;
+        }
+        @include mediaQuery(64em) {
+            font-size: $h1SpanDesktop;
+        }
     }
 }
 
-h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6, p, a {
     font-family: $bodyFont;
 }
 
 //Navigation font stylings
 li {
     list-style-type: none;
-    a {
-        font-family: $navFont;
-        text-transform: uppercase;
-    }
 }
 
+a {
+    text-transform: uppercase;
+    color:$fontColorLight;
+    text-decoration: none;
+    &:hover, &:focus, &:active {
+        color: $fontColorCheese;
+        outline: none;
+    }        
+}
+
+//Movie tab bar
+.movie-type-select select,
+.movie-type-btns button {
+    font-family: $navFont;
+    font-size: $MobileNav;
+    text-transform: uppercase;
+    color: $fontColorLight;
+
+    @include mediaQuery(45.25em) {
+        font-size: $tabletSubNav;
+    }
+
+    &:hover, &:focus, &:active {
+        color: $fontColorCheese;
+    }
+}
 
 footer{
     color: $fontColorLight;

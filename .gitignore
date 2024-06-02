@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# user adds
-PRIVATE-api-info.js
+# API KEY DO NOT REMOVE 
+.env
+
