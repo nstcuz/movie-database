@@ -1,25 +1,24 @@
-import '../scss/styles.scss'
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  truncateTitle,
-  truncateOverview,
-  formatRatingPercentage,
-  appTitle
-} from "../globals/globalVars";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Thumbnail from "../components/Thumbnail";
 import isFav from "../../utilities/isFav.js";
-import { useEffect } from "react";
-
-
+import { appTitle } from "../globals/globalVars";
+import { setFavorites } from "../favs/favSlices"; // Import the setFavorites action creator
 
 function PageFavorites() {
   const favs = useSelector((state) => state.favs.items);
-  console.log(favs);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.title = `${appTitle}-favs`;
-  });
+
+    // Initialize state with items from local storage if they exist
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites"));
+    if (storedFavorites && storedFavorites.length > 0) {
+      dispatch(setFavorites(storedFavorites));
+    }
+  }, [dispatch]);
 
   return (
     <main>
@@ -32,22 +31,20 @@ function PageFavorites() {
             <div className="paragraph-container">
               <p className="fav-p">
                 That's not <i>gouda</i>, you have no favorites!
-              <br></br>
-              <br></br>
-               Return to the <Link to="/">home</Link> page and start your collection by clicking the hearts on your favorite movies
+                <br />
+                <br />
+                Return to the <Link to="/">home</Link> page and start your collection by clicking the hearts on your favorite movies
               </p>
             </div>
           ) : (
             <section className="thumbnail-section">
-              {favs &&
-                favs.length > 0 &&
-                favs.map((movie) => (
-                  <Thumbnail
-                    key={movie.id}
-                    movie={movie}
-                    isFav={isFav(favs, true, movie.id)}
-                  />
-                ))}
+              {favs.map((movie) => (
+                <Thumbnail
+                  key={movie.id}
+                  movie={movie}
+                  isFav={isFav(favs, true, movie.id)}
+                />
+              ))}
             </section>
           )}
         </div>
