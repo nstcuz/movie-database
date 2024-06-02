@@ -14,22 +14,6 @@ function Thumbnail({ isFav, movie }) {
 
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
-
-  // const handleRemoveFav = (movie) => {
-  //   dispatchFavAction(false, movie);
-  // };
-
-  // const dispatchFavAction = (isAdding) => {
-  //   if (isAdding) {
-  //     dispatch(addFav(movie));
-  //     // Dispatch action to add to favorites
-  //     console.log("Adding to favorites:");
-  //   } else {
-  //     // Dispatch action to remove from favorites
-  //     dispatch(deleteFav(movie));
-  //     console.log("Removing from favorites:");
-  //   }
-  // };
   const toggleOverlay = () => {
     setIsOverlayVisible(prevState => !prevState);
   };

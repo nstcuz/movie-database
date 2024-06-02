@@ -4,6 +4,7 @@ import { movieEndpoint, apiKey } from '../globals/globalVars';
 import Hero from '../components/Hero';
 import Thumbnail from "../components/Thumbnail";
 import isFav from '../../utilities/isFav';
+
 function PageHome() {
     const [movies, setMovies] = useState([]);
     const [movieType, setMovieType] = useState("now_playing");

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { movieEndpoint, formatRatingPercentage } from '../globals/globalVars';
-const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
 import FavoriteBtn from '../components/FavoriteBtn';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import clapperHero from '../images/clapper-hero.svg'; // Importing clapper board image
+import { useSelector, useDispatch } from 'react-redux';
+import isFav from '../../utilities/isFav';
+import { addFav, deleteFav } from '../favs/favSlices';
+
+const apiKey = import.meta.env.VITE_MOVIEDB_API_KEY;
 
 function SingleDetails() {
   const [movie, setMovie] = useState(null);
@@ -12,6 +15,10 @@ function SingleDetails() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   let {id} = useParams();
+  const dispatch = useDispatch(); // Get dispatch function
+
+  // Retrieve favourites state using useSelector
+  const favs = useSelector((state) => state.favs.items);
 
   // make API call to 2 diff endpoint, one for the movie, the other for cast members
   useEffect(() => {
@@ -83,6 +90,15 @@ function SingleDetails() {
     };
   }, [credits]);
 
+  // Handler for adding or removing from favorites
+  const handleFavorite = () => {
+    if (isFav(favs, null, movie.id)) {
+      dispatch(deleteFav(movie)); // Remove from favorites
+    } else {
+      dispatch(addFav(movie)); // Add to favorites
+    }
+  };
+
   return (
     <div className='movie-details'>
       {movie && (
@@ -103,7 +119,6 @@ function SingleDetails() {
                 ))}
               </ul>
             )}
-            <FavoriteBtn />
           </div>
         </section>
       )}
@@ -141,7 +156,7 @@ function SingleDetails() {
             <div className='rating rating-placement'>
               <p>{formatRatingPercentage(movie && movie.vote_average )}</p>
             </div>
-            <FavoriteBtn />
+            <FavoriteBtn remove={movie && isFav(favs, null, movie.id)} movie={movie} onClick={handleFavorite} />
           </div>
         </div> {/*overview details */}
       </section>
