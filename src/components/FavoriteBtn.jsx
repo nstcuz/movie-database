@@ -41,4 +41,4 @@ FavoriteBtn.defaultProps = {
   remove: false,
 };
 
-export default FavoriteBtn; // Exporting FavoriteBtn component
+export default FavoriteBtn;

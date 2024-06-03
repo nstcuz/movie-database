@@ -7,28 +7,34 @@ import isFav from '../../utilities/isFav';
 
 function PageHome() {
     const [movies, setMovies] = useState([]);
+    //State to hold the current movie type being displayed
     const [movieType, setMovieType] = useState("now_playing");
+    //State to hold the movies for the hero carousel
     const [heroCarousel, setHeroCarousel] = useState();
 
+    //useEffect to fetch movies whenever the movieType changes
     useEffect(() => {
         const fetchMovies = async (selectType) => {
-          const response = await fetch(`${movieEndpoint}${selectType}?api_key=${apiKey}`);
-          let data = await response.json();
-          setMovies(data.results);
-          console.log(data);
+            //Fetches movies from the API based on the selected type
+            const response = await fetch(`${movieEndpoint}${selectType}?api_key=${apiKey}`);
+            let data = await response.json();
+            setMovies(data.results);
 
-          if (movieType == "now_playing") {
-            setHeroCarousel(data.results);
-          } 
+             //Sets the hero carousel movies if the type is "now_playing"
+            if (movieType == "now_playing") {
+                setHeroCarousel(data.results);
+            } 
         };
 
         fetchMovies(movieType);
     }, [movieType]);
 
+    //Function to handle changes in the movie type
     const handleMovieTypeChange = (type) => {
         setMovieType(type);
     };
 
+    //Get the list of favourite movies from the Redux store
     const favs = useSelector((state) => state.favs.items);
 
     return (
@@ -36,6 +42,7 @@ function PageHome() {
             <section>
                 <Hero movies={heroCarousel} />
             </section>
+            {/* Dropdown to select movie type for screens smaller than 45.25em */}
             <div className="movie-type-select">
                 <select onChange={(event) => handleMovieTypeChange(event.target.value)}>
                     <option value="now_playing">Now Playing</option>
@@ -44,6 +51,7 @@ function PageHome() {
                     <option value="top_rated">Top Rated</option>
                 </select>
             </div>
+            {/* Buttons to select movie type for screens larger than 45.25em */}
             <div className="movie-type-btns">
                 <button onClick={() => handleMovieTypeChange("now_playing")}>Now Playing</button>
                 <button onClick={() => handleMovieTypeChange("popular")}>Popular</button>
@@ -51,7 +59,7 @@ function PageHome() {
                 <button onClick={() => handleMovieTypeChange("top_rated")}>Top Rated</button>
             </div>
 
-            {/* /grab this section 67-78 */}
+            {/* Thumbnails on Home Page to each output Title, Release Date, Overview, Rating */}
 			<section className="thumbnail-section">
                 {movies.slice(0, 18).map(movie => (
                     <Thumbnail
